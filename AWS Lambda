@@ -1,0 +1,1132 @@
+{
+  "name": "AWS Lambda",
+  "description": "This Dashboard contains all important metrics of Lambda Functions.",
+  "data": {
+    "tz": "local",
+    "panels": [
+      {
+        "id": "f29730e7-eeca-47bc-b8c7-ea9711c8a88c",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "duration",
+            "decimals": 5,
+            "multiplyBy": ""
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "Duration",
+        "tooltip": {
+          "mode": "all"
+        },
+        "panelType": "TimeSeries",
+        "timeRange": "3h",
+        "statConfig": {
+          "format": "number",
+          "statView": "grid",
+          "baseColor": "#4CBB17",
+          "calculation": "last"
+        },
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              }
+            ]
+          }
+        },
+        "description": "The Duration of the lambda Function.",
+        "node_configs": [
+          {
+            "stat": "Maximum",
+            "type": "query",
+            "metric": "Duration",
+            "nodeId": "A",
+            "period": 60,
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/Lambda",
+            "dimensions": {
+              "FunctionName": [
+                "$FunctionName"
+              ]
+            },
+            "datasourceId": "$Datasource",
+            "responseType": "series"
+          },
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "Duration",
+            "nodeId": "B",
+            "period": 60,
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/Lambda",
+            "dimensions": {
+              "FunctionName": [
+                "$FunctionName"
+              ]
+            },
+            "datasourceId": "$Datasource",
+            "responseType": "series"
+          }
+        ],
+        "time_options": {
+          "override": false,
+          "time_shift": ""
+        }
+      },
+      {
+        "id": "d21dc097-58aa-495b-9218-574c921d42c1",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "decimals": 2,
+            "multiplyBy": ""
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "Invocations",
+        "tooltip": {
+          "mode": "all"
+        },
+        "panelType": "TimeSeries",
+        "timeRange": "3h",
+        "statConfig": {
+          "format": "number",
+          "statView": "grid",
+          "baseColor": "#4CBB17",
+          "calculation": "last"
+        },
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Total",
+                "value": "total"
+              }
+            ]
+          }
+        },
+        "description": "The invocations of the lambda Function.",
+        "node_configs": [
+          {
+            "stat": "Sum",
+            "type": "query",
+            "metric": "Invocations",
+            "nodeId": "A",
+            "period": 60,
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/Lambda",
+            "dimensions": {
+              "FunctionName": [
+                "$FunctionName"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "5a537b08-3fa4-48d6-aa9a-09b6b3042b24",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "decimals": 2,
+            "multiplyBy": ""
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "Errors",
+        "tooltip": {
+          "mode": "all"
+        },
+        "panelType": "TimeSeries",
+        "timeRange": "3h",
+        "statConfig": {
+          "format": "number",
+          "statView": "grid",
+          "baseColor": "#4CBB17",
+          "calculation": "last"
+        },
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Total",
+                "value": "total"
+              }
+            ]
+          }
+        },
+        "description": "The total Errors occured to the lambda Function.",
+        "node_configs": [
+          {
+            "stat": "Sum",
+            "type": "query",
+            "metric": "Errors",
+            "nodeId": "A",
+            "period": 60,
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/Lambda",
+            "dimensions": {
+              "FunctionName": [
+                "$FunctionName"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "42bfc341-8891-4892-8b6f-31c67ec9dc38",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "decimals": "",
+            "multiplyBy": ""
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "Throttles",
+        "tooltip": {
+          "mode": "all"
+        },
+        "panelType": "TimeSeries",
+        "timeRange": "3h",
+        "statConfig": {
+          "format": "number",
+          "statView": "grid",
+          "baseColor": "#4CBB17",
+          "calculation": "last"
+        },
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Last",
+                "value": "last"
+              },
+              {
+                "label": "Total",
+                "value": "total"
+              }
+            ]
+          }
+        },
+        "description": "The total Throttles and Deadletter errors occured to the lambda Function.",
+        "node_configs": [
+          {
+            "stat": "Sum",
+            "type": "query",
+            "metric": "Throttles",
+            "nodeId": "A",
+            "period": 60,
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/Lambda",
+            "dimensions": {
+              "FunctionName": [
+                "$FunctionName"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          },
+          {
+            "stat": "Sum",
+            "type": "query",
+            "metric": "DeadLetterErrors",
+            "nodeId": "B",
+            "period": 60,
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/Lambda",
+            "dimensions": {
+              "FunctionName": [
+                "$FunctionName"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "b6fa90c8-db6c-4705-bf0f-f9f86c7858be",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "decimals": "",
+            "multiplyBy": ""
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "Global Concurrent Executions",
+        "timeRange": "3h",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "description": "The Global Concurrent Executions of the lambda Function.",
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "ConcurrentExecutions",
+            "nodeId": "A",
+            "period": 60,
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/Lambda",
+            "dimensions": {
+              "FunctionName": [
+                "$FunctionName"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          },
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "UnreservedConcurrentExecutions",
+            "nodeId": "B",
+            "period": 60,
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/Lambda",
+            "dimensions": {
+              "FunctionName": [
+                "$FunctionName"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "d5067732-9ef1-4795-b3c3-0f86723efeb1",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "duration",
+            "decimals": "",
+            "multiplyBy": ""
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "Iterator age",
+        "timeRange": "3h",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "description": "The Iterator age of the lambda Function.",
+        "node_configs": [
+          {
+            "stat": "Maximum",
+            "type": "query",
+            "metric": "IteratorAge",
+            "nodeId": "A",
+            "period": 60,
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/Lambda",
+            "dimensions": {
+              "FunctionName": [
+                "$FunctionName"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "3db2d58f-92cc-4540-bb9f-a781a6cc70c5",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "duration",
+            "decimals": 2
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "Coldstart Duration",
+        "tooltip": {
+          "mode": "all"
+        },
+        "panelType": "TimeSeries",
+        "timeRange": "1d",
+        "statConfig": {
+          "format": "number",
+          "statView": "grid",
+          "baseColor": "#4CBB17",
+          "calculation": "last"
+        },
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              }
+            ]
+          }
+        },
+        "description": "The coldstart duration of Lambda function",
+        "node_configs": [
+          {
+            "stat": "Maximum",
+            "type": "query",
+            "metric": "coldstart_duration",
+            "nodeId": "A",
+            "period": 60,
+            "region": "$Region",
+            "source": "kloudmate",
+            "dataset": "logs",
+            "filters": [
+              {
+                "type": "string",
+                "field": "@accountId",
+                "value": "",
+                "operator": "EXISTS"
+              },
+              {
+                "type": "number",
+                "field": "@coldStartDuration",
+                "value": "",
+                "operator": "EXISTS"
+              },
+              {
+                "type": "root",
+                "field": "serviceName",
+                "value": "$FunctionName",
+                "operator": "="
+              },
+              {
+                "type": "string",
+                "field": "@region",
+                "value": "$Region",
+                "operator": "="
+              },
+              {
+                "type": "string",
+                "field": "@type",
+                "value": "REPORT",
+                "operator": "="
+              }
+            ],
+            "groupBy": [],
+            "namespace": "KM/Lambda",
+            "dimensions": {
+              "lambdaName": [
+                "$FunctionName"
+              ]
+            },
+            "aggregation": {
+              "stat": "AVG",
+              "type": "number",
+              "field": "@coldStartDuration"
+            },
+            "datasourceId": "kloudmate",
+            "legendFormat": "{{serviceName}}"
+          }
+        ]
+      },
+      {
+        "id": "ac976872-5846-4911-b8db-e18f8a6a7c3f",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "decimals": 2
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "Coldstart count",
+        "tooltip": {
+          "mode": "all"
+        },
+        "panelType": "TimeSeries",
+        "timeRange": "1d",
+        "statConfig": {
+          "format": "number",
+          "statView": "grid",
+          "baseColor": "#4CBB17",
+          "calculation": "last"
+        },
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Total",
+                "value": "total"
+              }
+            ]
+          }
+        },
+        "description": "The coldstart count of Lambda function",
+        "node_configs": [
+          {
+            "stat": "Sum",
+            "type": "query",
+            "metric": "coldstart_count",
+            "nodeId": "A",
+            "period": 60,
+            "region": "$Region",
+            "source": "kloudmate",
+            "dataset": "logs",
+            "filters": [
+              {
+                "type": "number",
+                "field": "@coldStartDuration",
+                "value": "",
+                "operator": "EXISTS"
+              },
+              {
+                "type": "string",
+                "field": "@accountId",
+                "operator": "EXISTS"
+              },
+              {
+                "type": "root",
+                "field": "serviceName",
+                "value": "$FunctionName",
+                "operator": "="
+              },
+              {
+                "type": "string",
+                "field": "@region",
+                "value": "$Region",
+                "operator": "="
+              },
+              {
+                "type": "string",
+                "field": "@type",
+                "value": "REPORT",
+                "operator": "="
+              }
+            ],
+            "groupBy": [],
+            "namespace": "KM/Lambda",
+            "dimensions": {
+              "lambdaName": [
+                "$FunctionName"
+              ]
+            },
+            "aggregation": {
+              "stat": "COUNT",
+              "type": "",
+              "field": ""
+            },
+            "datasourceId": "kloudmate",
+            "legendFormat": "{{serviceName}}",
+            "responseType": "series"
+          }
+        ]
+      },
+      {
+        "id": "5dc38a9e-8fd7-4357-827c-ab4855edffd7",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "bytes",
+            "decimals": 2,
+            "multiplyBy": 1000000
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "Memory used",
+        "tooltip": {
+          "mode": "all"
+        },
+        "panelType": "TimeSeries",
+        "timeRange": "1d",
+        "statConfig": {
+          "format": "number",
+          "statView": "grid",
+          "baseColor": "#4CBB17",
+          "calculation": "last"
+        },
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              }
+            ]
+          }
+        },
+        "description": "The Average Memory used by Lambda function",
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "memory_used",
+            "nodeId": "A",
+            "period": 60,
+            "region": "$Region",
+            "source": "kloudmate",
+            "dataset": "logs",
+            "filters": [
+              {
+                "type": "string",
+                "field": "@accountId",
+                "value": "",
+                "operator": "EXISTS"
+              },
+              {
+                "type": "number",
+                "field": "@maxMemoryUsed",
+                "value": "",
+                "operator": "EXISTS"
+              },
+              {
+                "type": "root",
+                "field": "serviceName",
+                "value": "$FunctionName",
+                "operator": "="
+              },
+              {
+                "type": "string",
+                "field": "@region",
+                "value": "$Region",
+                "operator": "="
+              },
+              {
+                "type": "string",
+                "field": "@type",
+                "value": "REPORT",
+                "operator": "="
+              }
+            ],
+            "groupBy": [],
+            "namespace": "KM/Lambda",
+            "dimensions": {
+              "lambdaName": [
+                "$FunctionName"
+              ]
+            },
+            "aggregation": {
+              "stat": "AVG",
+              "type": "number",
+              "field": "@maxMemoryUsed"
+            },
+            "datasourceId": "kloudmate",
+            "legendFormat": "{{serviceName}}"
+          }
+        ]
+      },
+      {
+        "id": "47qhauiyj87",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "bytes"
+          }
+        },
+        "STATS": {},
+        "title": "Log Group usage",
+        "panelType": "STATS",
+        "timeRange": "3d",
+        "statConfig": {
+          "format": "bytes",
+          "statView": "table",
+          "baseColor": "#4CBB17",
+          "calculation": {
+            "label": "Total",
+            "value": "total"
+          }
+        },
+        "timeseries": {
+          "legend": {
+            "view": "list",
+            "values": []
+          }
+        },
+        "node_configs": [
+          {
+            "page": 1,
+            "stat": "Sum",
+            "type": "query",
+            "hidden": false,
+            "metric": "IncomingBytes",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "AWS/Logs",
+            "dimensions": {
+              "LogGroupName": [
+                "*"
+              ]
+            },
+            "metricType": "",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "AVG",
+              "type": "",
+              "field": ""
+            },
+            "datasourceId": "acc_tblvv9isgMhG",
+            "responseType": "series"
+          }
+        ],
+        "time_options": {
+          "override": false,
+          "time_shift": ""
+        }
+      }
+    ],
+    "timeRange": "1d",
+    "variables": [
+      {
+        "id": "8c692014-3cb3-11ee-be56-0242ac120002",
+        "name": "DataSource",
+        "type": "query",
+        "label": "Data Source",
+        "config": {
+          "source": "cloudwatch",
+          "queryType": "datasource"
+        },
+        "description": "",
+        "usedInPanels": [],
+        "usesVariables": [],
+        "usedInVariables": []
+      },
+      {
+        "id": "bcfa05ed-c07b-4eb1-864f-a26ced4a8a39",
+        "name": "Region",
+        "type": "query",
+        "label": "Region",
+        "config": {
+          "source": "kloudmate",
+          "queryType": "regions",
+          "datasourceId": "$Datasource"
+        },
+        "description": "Region of Service",
+        "usedInPanels": [
+          {
+            "id": "f29730e7-eeca-47bc-b8c7-ea9711c8a88c",
+            "name": "Duration"
+          },
+          {
+            "id": "d21dc097-58aa-495b-9218-574c921d42c1",
+            "name": "Invocations"
+          },
+          {
+            "id": "5a537b08-3fa4-48d6-aa9a-09b6b3042b24",
+            "name": "Errors"
+          },
+          {
+            "id": "42bfc341-8891-4892-8b6f-31c67ec9dc38",
+            "name": "Throttles"
+          },
+          {
+            "id": "b6fa90c8-db6c-4705-bf0f-f9f86c7858be",
+            "name": "Global Concurrent Executions"
+          },
+          {
+            "id": "d5067732-9ef1-4795-b3c3-0f86723efeb1",
+            "name": "Iterator age"
+          },
+          {
+            "id": "3db2d58f-92cc-4540-bb9f-a781a6cc70c5",
+            "name": "Coldstart Duration"
+          },
+          {
+            "id": "ac976872-5846-4911-b8db-e18f8a6a7c3f",
+            "name": "Coldstart count"
+          },
+          {
+            "id": "5dc38a9e-8fd7-4357-827c-ab4855edffd7",
+            "name": "Memory used"
+          }
+        ],
+        "usesVariables": [
+          {
+            "id": "8c692014-3cb3-11ee-be56-0242ac120002",
+            "name": "Datasource"
+          }
+        ],
+        "usedInVariables": [
+          {
+            "id": "412ad92a-9e7d-481d-a5ae-492789e1fb16",
+            "name": "FunctionName"
+          }
+        ]
+      },
+      {
+        "id": "412ad92a-9e7d-481d-a5ae-492789e1fb16",
+        "name": "FunctionName",
+        "type": "query",
+        "label": "Function Name",
+        "config": {
+          "source": "kloudmate",
+          "metrics": "Invocations",
+          "regions": "$Region",
+          "queryType": "dimension_values",
+          "datasource": "$Datasource",
+          "dimensions": {},
+          "namespaces": "AWS/Lambda",
+          "datasourceId": "$Datasource",
+          "dimension_keys": "FunctionName"
+        },
+        "description": "Name of the Lambda function",
+        "usedInPanels": [
+          {
+            "id": "f29730e7-eeca-47bc-b8c7-ea9711c8a88c",
+            "name": "Duration"
+          },
+          {
+            "id": "d21dc097-58aa-495b-9218-574c921d42c1",
+            "name": "Invocations"
+          },
+          {
+            "id": "5a537b08-3fa4-48d6-aa9a-09b6b3042b24",
+            "name": "Errors"
+          },
+          {
+            "id": "42bfc341-8891-4892-8b6f-31c67ec9dc38",
+            "name": "Throttles"
+          },
+          {
+            "id": "b6fa90c8-db6c-4705-bf0f-f9f86c7858be",
+            "name": "Global Concurrent Executions"
+          },
+          {
+            "id": "d5067732-9ef1-4795-b3c3-0f86723efeb1",
+            "name": "Iterator age"
+          },
+          {
+            "id": "3db2d58f-92cc-4540-bb9f-a781a6cc70c5",
+            "name": "Coldstart Duration"
+          },
+          {
+            "id": "ac976872-5846-4911-b8db-e18f8a6a7c3f",
+            "name": "Coldstart count"
+          },
+          {
+            "id": "5dc38a9e-8fd7-4357-827c-ab4855edffd7",
+            "name": "Memory used"
+          }
+        ],
+        "usesVariables": [
+          {
+            "id": "8c692014-3cb3-11ee-be56-0242ac120002",
+            "name": "DataSource"
+          },
+          {
+            "id": "bcfa05ed-c07b-4eb1-864f-a26ced4a8a39",
+            "name": "Region"
+          }
+        ],
+        "show_all_option": true,
+        "usedInVariables": []
+      }
+    ],
+    "panel_layouts": [
+      {
+        "h": 3,
+        "i": "f29730e7-eeca-47bc-b8c7-ea9711c8a88c",
+        "w": 6,
+        "x": 0,
+        "y": 0,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 3,
+        "i": "d21dc097-58aa-495b-9218-574c921d42c1",
+        "w": 6,
+        "x": 6,
+        "y": 0,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 3,
+        "i": "5a537b08-3fa4-48d6-aa9a-09b6b3042b24",
+        "w": 6,
+        "x": 0,
+        "y": 3,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 3,
+        "i": "42bfc341-8891-4892-8b6f-31c67ec9dc38",
+        "w": 6,
+        "x": 6,
+        "y": 3,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 3,
+        "i": "b6fa90c8-db6c-4705-bf0f-f9f86c7858be",
+        "w": 6,
+        "x": 0,
+        "y": 6,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 3,
+        "i": "d5067732-9ef1-4795-b3c3-0f86723efeb1",
+        "w": 6,
+        "x": 6,
+        "y": 6,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "3db2d58f-92cc-4540-bb9f-a781a6cc70c5",
+        "w": 4,
+        "x": 4,
+        "y": 9,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "ac976872-5846-4911-b8db-e18f8a6a7c3f",
+        "w": 4,
+        "x": 0,
+        "y": 9,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "5dc38a9e-8fd7-4357-827c-ab4855edffd7",
+        "w": 4,
+        "x": 8,
+        "y": 9,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "47qhauiyj87",
+        "w": 4,
+        "x": 0,
+        "y": 10,
+        "minH": 1,
+        "minW": 2
+      }
+    ],
+    "default_region": "us-east-1"
+  },
+  "tags": [
+    "AWS::Lambda::Function"
+  ]
+}
