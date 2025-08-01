@@ -1,0 +1,1018 @@
+{
+  "name": "AWS MemoryDB",
+  "description": "",
+  "data": {
+    "tz": "local",
+    "panels": [
+      {
+        "id": "40052f73-e813-4664-a804-b1b4317abf5a",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "percentage",
+            "decimals": 1,
+            "multiplyBy": 0.01
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "CPU Utilization",
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              }
+            ]
+          }
+        },
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "CPUUtilization",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/MemoryDB",
+            "dimensions": {
+              "NodeName": [
+                "$NodeName"
+              ],
+              "ClusterName": [
+                "$ClusterName"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "1d6bc55a-0f00-4d62-9890-14bcfba82360",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "percentage",
+            "decimals": 1,
+            "multiplyBy": 0.01
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "Memory Utilization",
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              }
+            ]
+          }
+        },
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "DatabaseMemoryUsagePercentage",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/MemoryDB",
+            "dimensions": {
+              "NodeName": [
+                "$NodeName"
+              ],
+              "ClusterName": [
+                "$ClusterName"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "95c23090-ba93-4cea-a53a-0f6bca455541",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "bytes",
+            "decimals": 1,
+            "multiplyBy": ""
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "Memory Uses",
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              }
+            ]
+          }
+        },
+        "description": "The total number of bytes allocated by Redis for all purposes, including the dataset, buffers, and so on.",
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "BytesUsedForMemoryDB",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/MemoryDB",
+            "dimensions": {
+              "NodeName": [
+                "$NodeName"
+              ],
+              "ClusterName": [
+                "$ClusterName"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "74aca0f8-4952-4ab4-b2ba-6a762ad13411",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "bytes",
+            "decimals": 1,
+            "multiplyBy": ""
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "Freeable Memory",
+        "folder_id": "dsh_lUgXPJum6Lcz",
+        "timeRange": "1d",
+        "created_by": "u_Z927CW7qFDi7",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              }
+            ]
+          }
+        },
+        "updated_by": "u_Z927CW7qFDi7",
+        "description": "",
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "FreeableMemory",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/MemoryDB",
+            "dimensions": {
+              "NodeName": [
+                "$NodeName"
+              ],
+              "ClusterName": [
+                "$ClusterName"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ],
+        "workspace_id": "ws_Fa371fFkW2Y1"
+      },
+      {
+        "id": "6569ba03-b68a-47c7-89fc-8c61dd144562",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "decimals": 1,
+            "multiplyBy": ""
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "NetworkPackets",
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              }
+            ]
+          }
+        },
+        "description": "The number of packets received/sent  on all network interfaces by the instance.",
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "NetworkPacketsIn",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/MemoryDB",
+            "dimensions": {
+              "NodeName": [
+                "$NodeName"
+              ],
+              "ClusterName": [
+                "$ClusterName"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          },
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "NetworkPacketsOut",
+            "nodeId": "B",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/MemoryDB",
+            "dimensions": {
+              "NodeName": [
+                "$NodeName"
+              ],
+              "ClusterName": [
+                "$ClusterName"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "f0bf60ac-8557-4f9b-a7ca-ae7ae4a95d2f",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "bytes",
+            "decimals": 1,
+            "multiplyBy": ""
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "Network",
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              }
+            ]
+          }
+        },
+        "description": "The number of packets received/sent  on all network interfaces by the instance.",
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "NetworkBytesIn",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/MemoryDB",
+            "dimensions": {
+              "NodeName": [
+                "$NodeName"
+              ],
+              "ClusterName": [
+                "$ClusterName"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          },
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "NetworkBytesOut",
+            "nodeId": "B",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/MemoryDB",
+            "dimensions": {
+              "NodeName": [
+                "$NodeName"
+              ],
+              "ClusterName": [
+                "$ClusterName"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "da5d3937-d4ca-4285-97fe-89e877442415",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "bytes",
+            "decimals": 1,
+            "multiplyBy": ""
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "Replication Bytes",
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Total",
+                "value": "total"
+              }
+            ]
+          }
+        },
+        "description": "The volume of data being replicated ",
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "ReplicationBytes",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/MemoryDB",
+            "dimensions": {
+              "NodeName": [
+                "$NodeName"
+              ],
+              "ClusterName": [
+                "$ClusterName"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "8710a126-51a6-4509-a5c1-4ffcf6c5d384",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "decimals": 1,
+            "multiplyBy": ""
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "Current Connections",
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Total",
+                "value": "total"
+              }
+            ]
+          }
+        },
+        "description": "The number of client connections, excluding connections from read replicas.",
+        "node_configs": [
+          {
+            "stat": "Sum",
+            "type": "query",
+            "metric": "CurrConnections",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/MemoryDB",
+            "dimensions": {
+              "NodeName": [
+                "$NodeName"
+              ],
+              "ClusterName": [
+                "$ClusterName"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "195a093b-6a42-461f-a899-3053fe78a02a",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "bytes",
+            "decimals": 1,
+            "multiplyBy": ""
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "Swap Usages",
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              }
+            ]
+          }
+        },
+        "description": "The amount of swap used on the host.",
+        "node_configs": [
+          {
+            "stat": "Maximum",
+            "type": "query",
+            "metric": "SwapUsage",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/MemoryDB",
+            "dimensions": {
+              "NodeName": [
+                "$NodeName"
+              ],
+              "ClusterName": [
+                "$ClusterName"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "93932737-1cf7-450f-b608-e15f4ed06f6e",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "decimals": 1,
+            "multiplyBy": ""
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "MaxReplicationThroughput(Bytes/second)",
+        "folder_id": "dsh_lUgXPJum6Lcz",
+        "timeRange": "1d",
+        "created_by": "u_Z927CW7qFDi7",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Total",
+                "value": "total"
+              }
+            ]
+          }
+        },
+        "updated_by": "u_Z927CW7qFDi7",
+        "description": "",
+        "node_configs": [
+          {
+            "stat": "Maximum",
+            "type": "query",
+            "metric": "MaxReplicationThroughput",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/MemoryDB",
+            "dimensions": {
+              "NodeName": [
+                "$NodeName"
+              ],
+              "ClusterName": [
+                "$ClusterName"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ],
+        "workspace_id": "ws_Fa371fFkW2Y1"
+      },
+      {
+        "id": "f0c1d7e3-79ae-4711-bd57-266e1186be90",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "decimals": 1,
+            "multiplyBy": ""
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "ReplicationDelayedWriteCommands",
+        "folder_id": "dsh_lUgXPJum6Lcz",
+        "timeRange": "1d",
+        "created_by": "u_Z927CW7qFDi7",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Total",
+                "value": "total"
+              }
+            ]
+          }
+        },
+        "updated_by": "u_Z927CW7qFDi7",
+        "description": "",
+        "node_configs": [
+          {
+            "stat": "Sum",
+            "type": "query",
+            "metric": "ReplicationDelayedWriteCommands",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/MemoryDB",
+            "dimensions": {
+              "NodeName": [
+                "$NodeName"
+              ],
+              "ClusterName": [
+                "$ClusterName"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ],
+        "workspace_id": "ws_Fa371fFkW2Y1"
+      },
+      {
+        "id": "09b68534-1286-4e6c-846e-cab2b3c19522",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "decimals": 1,
+            "multiplyBy": ""
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "Evictions",
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Total",
+                "value": "total"
+              }
+            ]
+          }
+        },
+        "description": "The number of keys that have been evicted due to the maxmemory limit.",
+        "node_configs": [
+          {
+            "stat": "Sum",
+            "type": "query",
+            "metric": "Evictions",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/MemoryDB",
+            "dimensions": {
+              "NodeName": [
+                "$NodeName"
+              ],
+              "ClusterName": [
+                "$ClusterName"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      }
+    ],
+    "timeRange": "1d",
+    "variables": [
+      {
+        "id": "8c692014-3cb3-11ee-be56-0242ac120002",
+        "name": "Datasource",
+        "type": "query",
+        "config": {
+          "source": "cloudwatch",
+          "queryType": "datasource"
+        },
+        "description": ""
+      },
+      {
+        "id": "b7227afd-20ba-47dd-953c-95638c14ebca",
+        "name": "Region",
+        "type": "query",
+        "config": {
+          "source": "kloudmate",
+          "queryType": "regions",
+          "datasourceId": "$Datasource"
+        },
+        "folder_id": "dsh_lUgXPJum6Lcz",
+        "created_by": "u_Z927CW7qFDi7",
+        "updated_by": "u_Z927CW7qFDi7",
+        "description": "",
+        "workspace_id": "ws_Fa371fFkW2Y1"
+      },
+      {
+        "id": "91e6f25b-a0a9-41c8-90ba-ae8115696c7e",
+        "name": "ClusterName",
+        "type": "query",
+        "config": {
+          "source": "kloudmate",
+          "metrics": "CPUUtilization",
+          "regions": "$Region",
+          "queryType": "dimension_values",
+          "datasource": "$Datasource",
+          "dimensions": {},
+          "namespaces": "AWS/MemoryDB",
+          "datasourceId": "$Datasource",
+          "dimension_keys": "ClusterName"
+        },
+        "folder_id": "dsh_lUgXPJum6Lcz",
+        "created_by": "u_Z927CW7qFDi7",
+        "updated_by": "u_Z927CW7qFDi7",
+        "description": "",
+        "usedInPanels": [],
+        "workspace_id": "ws_Fa371fFkW2Y1",
+        "usesVariables": [
+          {
+            "id": "b7227afd-20ba-47dd-953c-95638c14ebca",
+            "name": "Region"
+          }
+        ],
+        "usedInVariables": []
+      },
+      {
+        "id": "872452a3-1905-48c5-9a70-08281e8157de",
+        "name": "NodeName",
+        "type": "query",
+        "config": {
+          "source": "kloudmate",
+          "metrics": "CPUUtilization",
+          "regions": "$Region",
+          "queryType": "dimension_values",
+          "datasource": "$Datasource",
+          "namespaces": "AWS/MemoryDB",
+          "datasourceId": "$Datasource",
+          "dimension_keys": "NodeName"
+        },
+        "folder_id": "dsh_lUgXPJum6Lcz",
+        "created_by": "u_Z927CW7qFDi7",
+        "updated_by": "u_Z927CW7qFDi7",
+        "description": "",
+        "usedInPanels": [],
+        "workspace_id": "ws_Fa371fFkW2Y1",
+        "usesVariables": [
+          {
+            "id": "b7227afd-20ba-47dd-953c-95638c14ebca",
+            "name": "Region"
+          }
+        ],
+        "usedInVariables": []
+      }
+    ],
+    "panel_layouts": [
+      {
+        "h": 3,
+        "i": "40052f73-e813-4664-a804-b1b4317abf5a",
+        "w": 6,
+        "x": 0,
+        "y": 0,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 3,
+        "i": "1d6bc55a-0f00-4d62-9890-14bcfba82360",
+        "w": 6,
+        "x": 6,
+        "y": 0,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 3,
+        "i": "95c23090-ba93-4cea-a53a-0f6bca455541",
+        "w": 6,
+        "x": 0,
+        "y": 3,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 3,
+        "i": "74aca0f8-4952-4ab4-b2ba-6a762ad13411",
+        "w": 6,
+        "x": 6,
+        "y": 3,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 3,
+        "i": "6569ba03-b68a-47c7-89fc-8c61dd144562",
+        "w": 6,
+        "x": 0,
+        "y": 6,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 3,
+        "i": "f0bf60ac-8557-4f9b-a7ca-ae7ae4a95d2f",
+        "w": 6,
+        "x": 6,
+        "y": 6,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "da5d3937-d4ca-4285-97fe-89e877442415",
+        "w": 4,
+        "x": 0,
+        "y": 9,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "8710a126-51a6-4509-a5c1-4ffcf6c5d384",
+        "w": 4,
+        "x": 8,
+        "y": 9,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "195a093b-6a42-461f-a899-3053fe78a02a",
+        "w": 4,
+        "x": 4,
+        "y": 9,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "93932737-1cf7-450f-b608-e15f4ed06f6e",
+        "w": 4,
+        "x": 8,
+        "y": 11,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "f0c1d7e3-79ae-4711-bd57-266e1186be90",
+        "w": 4,
+        "x": 0,
+        "y": 11,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "09b68534-1286-4e6c-846e-cab2b3c19522",
+        "w": 4,
+        "x": 4,
+        "y": 11,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      }
+    ],
+    "default_region": "us-east-1"
+  },
+  "tags": [
+    "AWS::MemoryDB"
+  ]
+}
