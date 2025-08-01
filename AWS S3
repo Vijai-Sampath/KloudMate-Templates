@@ -1,0 +1,201 @@
+{
+  "name": "AWS S3",
+  "description": "",
+  "data": {
+    "tz": "local",
+    "panels": [
+      {
+        "id": "be90ec0b-ae4a-49c8-9e37-a1d75dbb3ff1",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "bytes",
+            "decimals": 1
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "Bucket Size",
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              }
+            ]
+          }
+        },
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "BucketSizeBytes",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/S3",
+            "dimensions": {
+              "BucketName": [
+                "$BucketName"
+              ],
+              "StorageType": [
+                "StandardStorage"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "f386ecd4-9224-4ff3-83ac-90de36ee6842",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "decimals": 1
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "Number of Objects",
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              }
+            ]
+          }
+        },
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "NumberOfObjects",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/S3",
+            "dimensions": {
+              "BucketName": [
+                "$BucketName"
+              ],
+              "StorageType": [
+                "AllStorageTypes"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      }
+    ],
+    "timeRange": "1d",
+    "variables": [
+      {
+        "id": "8c692014-3cb3-11ee-be56-0242ac120002",
+        "name": "Datasource",
+        "type": "query",
+        "config": {
+          "source": "cloudwatch",
+          "queryType": "datasource"
+        },
+        "description": ""
+      },
+      {
+        "id": "680dd672-aa97-4390-bde0-8ed001a4cca9",
+        "name": "Region",
+        "type": "query",
+        "config": {
+          "source": "kloudmate",
+          "queryType": "regions",
+          "datasourceId": "$Datasource"
+        },
+        "folder_id": "dsh_lUgXPJum6Lcz",
+        "created_by": "u_Z927CW7qFDi7",
+        "updated_by": "u_Z927CW7qFDi7",
+        "description": "",
+        "workspace_id": "ws_Fa371fFkW2Y1"
+      },
+      {
+        "id": "92cd4479-cb52-42f9-83e3-2b2b84d66435",
+        "name": "BucketName",
+        "type": "query",
+        "config": {
+          "source": "kloudmate",
+          "metrics": "BucketSizeBytes",
+          "regions": "$Region",
+          "queryType": "dimension_values",
+          "datasource": "$Datasource",
+          "namespaces": "AWS/S3",
+          "datasourceId": "$Datasource",
+          "dimension_keys": "BucketName"
+        },
+        "folder_id": "dsh_lUgXPJum6Lcz",
+        "created_by": "u_Z927CW7qFDi7",
+        "updated_by": "u_Z927CW7qFDi7",
+        "description": "",
+        "workspace_id": "ws_Fa371fFkW2Y1"
+      }
+    ],
+    "panel_layouts": [
+      {
+        "h": 5,
+        "i": "be90ec0b-ae4a-49c8-9e37-a1d75dbb3ff1",
+        "w": 6,
+        "x": 0,
+        "y": 0,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 5,
+        "i": "f386ecd4-9224-4ff3-83ac-90de36ee6842",
+        "w": 6,
+        "x": 6,
+        "y": 0,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      }
+    ],
+    "default_region": "us-east-1"
+  },
+  "tags": [
+    "AWS::S3::Bucket"
+  ]
+}
