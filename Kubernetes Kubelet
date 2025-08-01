@@ -1,0 +1,2919 @@
+{
+  "name": "Kubernetes-Kubelet",
+  "description": "",
+  "data": {
+    "tz": "local",
+    "panels": [
+      {
+        "id": "529vks9nhq5",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "unformatted",
+            "decimals": 3
+          }
+        },
+        "title": "Running Containers",
+        "panelType": "STATS",
+        "timeRange": "15m",
+        "statConfig": {
+          "format": "number",
+          "statView": "grid",
+          "baseColor": "#4CBB17",
+          "calculation": "last"
+        },
+        "timeseries": {
+          "legend": {
+            "view": "list",
+            "values": []
+          }
+        },
+        "node_configs": [
+          {
+            "exp": "sum(kubelet_running_containers{cluster=\"$cluster\", job!=\"\", instance=~\"$instance\"})",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "A",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "",
+            "dimensions": {},
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "SUM",
+              "type": "",
+              "unit": "",
+              "field": "",
+              "metric": "kubelet_running_containers",
+              "metricType": "gauge"
+            },
+            "datasourceId": "kloudmate",
+            "legendFormat": "{{instance}}",
+            "responseType": "series"
+          }
+        ]
+      },
+      {
+        "id": "5ztqznexqyn",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "unformatted",
+            "decimals": 3
+          }
+        },
+        "title": "Running Kubelet",
+        "panelType": "STATS",
+        "timeRange": "1h",
+        "statConfig": {
+          "format": "number",
+          "statView": "grid",
+          "baseColor": "#4CBB17",
+          "calculation": "last"
+        },
+        "timeseries": {
+          "legend": {
+            "view": "list",
+            "values": []
+          }
+        },
+        "node_configs": [
+          {
+            "exp": "sum(kubelet_node_name{cluster=\"$cluster\", job!=\"\"})",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "A",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "",
+            "dimensions": {},
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "SUM",
+              "type": "",
+              "unit": "",
+              "field": "",
+              "metric": "kubelet_node_name",
+              "metricType": "gauge"
+            },
+            "datasourceId": "kloudmate",
+            "responseType": "series"
+          }
+        ]
+      },
+      {
+        "id": "gb9lm3k5ix",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "unformatted",
+            "decimals": 3
+          }
+        },
+        "title": "Running Pods",
+        "panelType": "STATS",
+        "timeRange": "1h",
+        "statConfig": {
+          "format": "number",
+          "statView": "grid",
+          "baseColor": "#4CBB17",
+          "calculation": "last"
+        },
+        "timeseries": {
+          "legend": {
+            "view": "list",
+            "values": []
+          }
+        },
+        "node_configs": [
+          {
+            "exp": "sum(kubelet_running_pods{cluster=\"$cluster\", job!=\"\", instance=~\"$instance\"})",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "A",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "",
+            "dimensions": {},
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "SUM",
+              "type": "",
+              "unit": "",
+              "field": "",
+              "metric": "kubelet_running_pods",
+              "metricType": "gauge"
+            },
+            "datasourceId": "kloudmate",
+            "legendFormat": "{{instance}}",
+            "responseType": "series"
+          }
+        ]
+      },
+      {
+        "id": "0mwu3z301qpi",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "decimals": 3
+          }
+        },
+        "title": "Desired Volume Count",
+        "panelType": "STATS",
+        "timeRange": "30m",
+        "statConfig": {
+          "statView": "grid",
+          "baseColor": "#4CBB17",
+          "calculation": "last"
+        },
+        "timeseries": {
+          "legend": {
+            "view": "list",
+            "values": []
+          }
+        },
+        "node_configs": [
+          {
+            "exp": "sum(volume_manager_total_volumes{cluster=\"$cluster\", job!=\"\", instance=~\"$instance\",state=\"desired_state_of_world\"})",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "A",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [
+              {
+                "type": "string",
+                "field": "state",
+                "value": "desired_state_of_world",
+                "operator": "="
+              }
+            ],
+            "groupBy": [
+              {
+                "type": "string",
+                "field": "state"
+              }
+            ],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "",
+            "dimensions": {},
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "SUM",
+              "type": "",
+              "unit": "",
+              "field": "",
+              "metric": "volume_manager_total_volumes",
+              "metricType": "gauge"
+            },
+            "datasourceId": "kloudmate",
+            "legendFormat": "{{instance}}",
+            "responseType": "series"
+          }
+        ]
+      },
+      {
+        "id": "clrd9blv7yw",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "decimals": 3
+          }
+        },
+        "title": "Actual Volume Count ",
+        "panelType": "STATS",
+        "timeRange": "30m",
+        "statConfig": {
+          "statView": "grid",
+          "baseColor": "#4CBB17",
+          "calculation": "last"
+        },
+        "timeseries": {
+          "legend": {
+            "view": "list",
+            "values": []
+          }
+        },
+        "node_configs": [
+          {
+            "exp": "sum(volume_manager_total_volumes{cluster=\"$cluster\", job!=\"\", instance=~\"$instance\", state=\"actual_state_of_world\"})",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "A",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [
+              {
+                "type": "string",
+                "field": "state",
+                "value": "actual_state_of_world",
+                "operator": "="
+              }
+            ],
+            "groupBy": [
+              {
+                "type": "string",
+                "field": "state"
+              }
+            ],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "",
+            "dimensions": {},
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "SUM",
+              "type": "",
+              "unit": "",
+              "field": "",
+              "metric": "volume_manager_total_volumes",
+              "metricType": "gauge"
+            },
+            "datasourceId": "kloudmate",
+            "legendFormat": "{{instance}}",
+            "responseType": "series"
+          }
+        ]
+      },
+      {
+        "id": "p64h0ab3f2",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "unformatted",
+            "suffix": "ops/s",
+            "decimals": 3
+          }
+        },
+        "table": {
+          "columns": [
+            {
+              "key": "A:SUM()",
+              "rename": ""
+            },
+            {
+              "key": "operation_type",
+              "rename": ""
+            },
+            {
+              "key": "k8s.node.name",
+              "rename": ""
+            }
+          ]
+        },
+        "title": "Operation Rate",
+        "panelType": "TimeSeries",
+        "timeRange": "30m",
+        "statConfig": {
+          "statView": "grid",
+          "baseColor": "#4CBB17",
+          "calculation": "last"
+        },
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "node_configs": [
+          {
+            "exp": "sum(rate(kubelet_runtime_operations_total{cluster=\"$cluster\", instance=~\"$instance\"}[5m])) by (operation_type, instance)",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "A",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [
+              {
+                "type": "string",
+                "field": "operation_type"
+              },
+              {
+                "type": "string",
+                "field": "k8s.node.name"
+              }
+            ],
+            "orderBy": [],
+            "interval": "60s",
+            "namespace": "",
+            "dimensions": {},
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "SUM",
+              "type": "",
+              "unit": "",
+              "field": "",
+              "metric": "kubelet_runtime_operations_total",
+              "metricType": "counter"
+            },
+            "datasourceId": "kloudmate",
+            "legendFormat": "{{instance}} {{operation_type}}",
+            "responseType": "series"
+          }
+        ]
+      },
+      {
+        "id": "2n4s54vnjky",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "unformatted",
+            "suffix": "ops/s",
+            "decimals": 3
+          }
+        },
+        "title": "Operation Error Rate",
+        "panelType": "TimeSeries",
+        "timeRange": "1h",
+        "statConfig": {
+          "statView": "grid",
+          "baseColor": "#4CBB17",
+          "calculation": "last"
+        },
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "node_configs": [
+          {
+            "exp": "sum(rate(kubelet_runtime_operations_errors_total{instance=~\"$instance\"}[5m])) by (instance, operation_type)",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "A",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [
+              {
+                "type": "string",
+                "field": "k8s.node.name"
+              },
+              {
+                "type": "string",
+                "field": "operation_type"
+              }
+            ],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "",
+            "dimensions": {},
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "SUM",
+              "type": "",
+              "unit": "",
+              "field": "",
+              "metric": "kubelet_runtime_operations_errors_total",
+              "metricType": "counter"
+            },
+            "datasourceId": "kloudmate",
+            "legendFormat": "{{k8s.Node.Name}}",
+            "responseType": "series"
+          }
+        ]
+      },
+      {
+        "id": "4lx0l5ydyhv",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "percentage",
+            "decimals": 3,
+            "multiplyBy": ""
+          }
+        },
+        "title": "Pod CPU Usage",
+        "panelType": "TimeSeries",
+        "timeRange": "30m",
+        "statConfig": {
+          "statView": "grid",
+          "baseColor": "#4CBB17",
+          "calculation": "last"
+        },
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              }
+            ]
+          }
+        },
+        "node_configs": [
+          {
+            "exp": "sum(rate(container_cpu_usage_seconds_total{cluster=\"$cluster\", container!=\"\"}[5m])) by (namespace,pod)",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "A",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [
+              {
+                "type": "string",
+                "field": "k8s.pod.name"
+              },
+              {
+                "type": "string",
+                "field": "k8s.namespace.name"
+              }
+            ],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "",
+            "dimensions": {},
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "SUM",
+              "type": "",
+              "unit": "1",
+              "field": "",
+              "metric": "container_cpu_utilization",
+              "metricType": "gauge"
+            },
+            "datasourceId": "kloudmate",
+            "legendFormat": "{{pod}}",
+            "responseType": "series"
+          }
+        ]
+      },
+      {
+        "id": "2nvn8na0nr9",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "bytes",
+            "decimals": 3
+          }
+        },
+        "title": "Pod Memory Usage",
+        "panelType": "TimeSeries",
+        "timeRange": "1h",
+        "statConfig": {
+          "statView": "grid",
+          "baseColor": "#4CBB17",
+          "calculation": "last"
+        },
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              }
+            ]
+          }
+        },
+        "node_configs": [
+          {
+            "exp": "sum(container_memory_usage_bytes{cluster=\"$cluster\", container!=\"\"}) by (namespace,pod)\r\n",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "A",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [
+              {
+                "type": "string",
+                "field": "pod",
+                "operator": "!="
+              }
+            ],
+            "groupBy": [
+              {
+                "type": "string",
+                "field": "pod"
+              },
+              {
+                "type": "string",
+                "field": "namespace"
+              }
+            ],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "",
+            "dimensions": {},
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "SUM",
+              "type": "",
+              "unit": "",
+              "field": "",
+              "metric": "container_memory_usage_bytes",
+              "metricType": "gauge"
+            },
+            "datasourceId": "kloudmate",
+            "legendFormat": "{{pod}}",
+            "responseType": "series"
+          }
+        ]
+      },
+      {
+        "id": "0m9iu7n57j8",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          }
+        },
+        "title": "CrashLoop BackOff",
+        "panelType": "TimeSeries",
+        "timeRange": "1h",
+        "statConfig": {
+          "statView": "grid",
+          "baseColor": "#4CBB17",
+          "calculation": "last"
+        },
+        "timeseries": {
+          "legend": {
+            "view": "list",
+            "values": []
+          }
+        },
+        "node_configs": [
+          {
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "A",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "logs",
+            "filters": [
+              {
+                "type": "string",
+                "field": "@message.responseObject.rows.0.cells.2",
+                "value": "CrashLoopBackOff",
+                "operator": "="
+              }
+            ],
+            "groupBy": [
+              {
+                "type": "string",
+                "field": "@message.responseObject.rows.0.cells.2"
+              },
+              {
+                "type": "string",
+                "field": "@message.responseObject.rows.0.cells.0"
+              }
+            ],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "",
+            "dimensions": {},
+            "metricType": "",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "COUNT",
+              "type": "string",
+              "field": "@message"
+            },
+            "datasourceId": "kloudmate",
+            "responseType": "series"
+          }
+        ]
+      },
+      {
+        "id": "06n47j65amxp",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          }
+        },
+        "title": "Config Error Count",
+        "panelType": "TimeSeries",
+        "timeRange": "1h",
+        "statConfig": {
+          "statView": "grid",
+          "baseColor": "#4CBB17",
+          "calculation": "last"
+        },
+        "timeseries": {
+          "legend": {
+            "view": "list",
+            "values": []
+          }
+        },
+        "node_configs": [
+          {
+            "exp": "sum(rate(kubelet_node_config_error{cluster=\"$cluster\", job!=\"\", instance=~\"$instance\"}[5m]))",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "A",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "",
+            "dimensions": [],
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "AVG",
+              "type": "",
+              "field": ""
+            },
+            "datasourceId": "kloudmate",
+            "legendFormat": "{{instance}}",
+            "responseType": "series"
+          }
+        ]
+      },
+      {
+        "id": "i3akj2335g",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "percentage",
+            "decimals": 3,
+            "multiplyBy": 0.1
+          }
+        },
+        "table": {
+          "columns": [
+            {
+              "key": "A",
+              "rename": ""
+            }
+          ]
+        },
+        "title": "Cluster CPU usages",
+        "panelType": "STATS",
+        "timeRange": "30m",
+        "statConfig": {
+          "format": "percentage",
+          "decimals": 2,
+          "statView": "grid",
+          "baseColor": "#4CBB17",
+          "multiplyBy": 0.01,
+          "calculation": "last"
+        },
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              }
+            ]
+          }
+        },
+        "node_configs": [
+          {
+            "exp": "sum(sum by (cluster, namespace, pod, container) (\r\n  rate(container_cpu_usage_seconds_total{job!=\"\", image!=\"\", cluster=\"$cluster\"}[5m])\r\n) * on (cluster, namespace, pod) group_left(node) topk by (cluster, namespace, pod) (\r\n  1, max by(cluster, namespace, pod, node) (kube_pod_info{node!=\"\", cluster=\"$cluster\"})\r\n) ) ",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "A",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "",
+            "dimensions": {},
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "SUM",
+              "type": "",
+              "unit": "1",
+              "field": "",
+              "metric": "container_cpu_utilization",
+              "metricType": "gauge"
+            },
+            "datasourceId": "kloudmate",
+            "legendFormat": "{{cluster}}",
+            "responseType": "series"
+          }
+        ]
+      },
+      {
+        "id": "8g5cafj1nkc",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "percentage",
+            "decimals": 3,
+            "multiplyBy": 0.1
+          }
+        },
+        "table": {
+          "columns": [
+            {
+              "key": "A",
+              "rename": ""
+            }
+          ]
+        },
+        "title": "Cluster Memory usages",
+        "panelType": "STATS",
+        "timeRange": "30m",
+        "statConfig": {
+          "format": "percentage",
+          "decimals": 2,
+          "statView": "grid",
+          "baseColor": "#4CBB17",
+          "multiplyBy": "",
+          "calculation": {
+            "label": "Last",
+            "value": "last"
+          }
+        },
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              }
+            ]
+          }
+        },
+        "node_configs": [
+          {
+            "exp": "sum(container_memory_rss{image!=\"\", job!=\"\", cluster=\"$cluster\"} * on (cluster, namespace, pod) group_left (node) topk by (cluster, namespace, pod) (1, max by (cluster, namespace, pod, node) (kube_pod_info{node!=\"\", cluster=\"$cluster\"})))  / sum(machine_memory_bytes{job!=\"\", cluster=\"$cluster\"})",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "A",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "",
+            "dimensions": {},
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "SUM",
+              "type": "",
+              "unit": "1",
+              "field": "",
+              "metric": "container_cpu_utilization",
+              "metricType": "gauge"
+            },
+            "datasourceId": "kloudmate",
+            "legendFormat": "{{cluster}}",
+            "responseType": "series"
+          }
+        ]
+      },
+      {
+        "id": "7um4wyqe8ys",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "percentage",
+            "decimals": 3,
+            "multiplyBy": 0.1
+          }
+        },
+        "table": {
+          "columns": [
+            {
+              "key": "A",
+              "rename": ""
+            }
+          ]
+        },
+        "title": "Cluster filesystem usage",
+        "panelType": "STATS",
+        "timeRange": "30m",
+        "statConfig": {
+          "format": "percentage",
+          "decimals": 2,
+          "statView": "grid",
+          "baseColor": "#4CBB17",
+          "multiplyBy": 0.01,
+          "calculation": {
+            "label": "Last",
+            "value": "last"
+          }
+        },
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              }
+            ]
+          }
+        },
+        "node_configs": [
+          {
+            "exp": "sum (container_fs_usage_bytes{cluster=\"$cluster\", device=~\"$volume\", id=\"/\", instance=~\"$instance\"}) / sum (container_fs_limit_bytes{cluster=\"$cluster\", device=~\"$volume\", id=\"/\", instance=~\"$instance\"}) * 100",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "A",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "",
+            "dimensions": {},
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "SUM",
+              "type": "",
+              "unit": "1",
+              "field": "",
+              "metric": "container_cpu_utilization",
+              "metricType": "gauge"
+            },
+            "datasourceId": "kloudmate",
+            "legendFormat": "{{cluster}}",
+            "responseType": "series"
+          }
+        ]
+      },
+      {
+        "id": "6r5jssoo3mg",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "percentage",
+            "decimals": 3,
+            "multiplyBy": 0.1
+          }
+        },
+        "table": {
+          "columns": [
+            {
+              "key": "A",
+              "rename": ""
+            }
+          ]
+        },
+        "title": "Memory Used",
+        "panelType": "STATS",
+        "timeRange": "30m",
+        "statConfig": {
+          "format": "bytes",
+          "decimals": 2,
+          "statView": "grid",
+          "baseColor": "#4CBB17",
+          "multiplyBy": "",
+          "calculation": "last"
+        },
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              }
+            ]
+          }
+        },
+        "node_configs": [
+          {
+            "exp": "sum (container_memory_working_set_bytes{cluster=\"$cluster\", id=\"/\", instance=~\"$instance\"})",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "A",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "",
+            "dimensions": {},
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "SUM",
+              "type": "",
+              "unit": "1",
+              "field": "",
+              "metric": "container_cpu_utilization",
+              "metricType": "gauge"
+            },
+            "datasourceId": "kloudmate",
+            "legendFormat": "{{instance}}",
+            "responseType": "series"
+          }
+        ]
+      },
+      {
+        "id": "5t2a5mlcttl",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "percentage",
+            "decimals": 3,
+            "multiplyBy": 0.1
+          }
+        },
+        "table": {
+          "columns": [
+            {
+              "key": "A",
+              "rename": ""
+            }
+          ]
+        },
+        "title": "Memory Total",
+        "panelType": "STATS",
+        "timeRange": "30m",
+        "statConfig": {
+          "format": "bytes",
+          "decimals": 2,
+          "statView": "grid",
+          "baseColor": "#4CBB17",
+          "multiplyBy": "",
+          "calculation": {
+            "label": "Last",
+            "value": "last"
+          }
+        },
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              }
+            ]
+          }
+        },
+        "node_configs": [
+          {
+            "exp": "sum (machine_memory_bytes{cluster=\"$cluster\", instance=~\"$instance\"})",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "A",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "",
+            "dimensions": {},
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "SUM",
+              "type": "",
+              "unit": "1",
+              "field": "",
+              "metric": "container_cpu_utilization",
+              "metricType": "gauge"
+            },
+            "datasourceId": "kloudmate",
+            "legendFormat": "{{instance}}",
+            "responseType": "series"
+          }
+        ]
+      },
+      {
+        "id": "29plidfnlgt",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "percentage",
+            "decimals": 3,
+            "multiplyBy": 0.1
+          }
+        },
+        "table": {
+          "columns": [
+            {
+              "key": "A",
+              "rename": ""
+            }
+          ]
+        },
+        "title": "CPU Used",
+        "panelType": "STATS",
+        "timeRange": "30m",
+        "statConfig": {
+          "format": "number",
+          "decimals": "",
+          "statView": "grid",
+          "baseColor": "#4CBB17",
+          "multiplyBy": "",
+          "calculation": {
+            "label": "Last",
+            "value": "last"
+          }
+        },
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              }
+            ]
+          }
+        },
+        "node_configs": [
+          {
+            "exp": "sum (rate (container_cpu_usage_seconds_total{cluster=\"$cluster\", id=\"/\",instance=~\"$instance\"}[1m]))",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "A",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "",
+            "dimensions": {},
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "SUM",
+              "type": "",
+              "unit": "1",
+              "field": "",
+              "metric": "container_cpu_utilization",
+              "metricType": "gauge"
+            },
+            "datasourceId": "kloudmate",
+            "legendFormat": "{{instance}}",
+            "responseType": "series"
+          }
+        ]
+      },
+      {
+        "id": "1s51udkytgo",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "percentage",
+            "decimals": 3,
+            "multiplyBy": 0.1
+          }
+        },
+        "table": {
+          "columns": [
+            {
+              "key": "A",
+              "rename": ""
+            }
+          ]
+        },
+        "title": "CPU Total",
+        "panelType": "STATS",
+        "timeRange": "30m",
+        "statConfig": {
+          "format": "unformatted",
+          "decimals": 2,
+          "statView": "grid",
+          "baseColor": "#4CBB17",
+          "multiplyBy": "",
+          "calculation": {
+            "label": "Last",
+            "value": "last"
+          }
+        },
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              }
+            ]
+          }
+        },
+        "node_configs": [
+          {
+            "exp": "sum (machine_cpu_cores{cluster=\"$cluster\", instance=~\"$instance\"})",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "A",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "",
+            "dimensions": {},
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "SUM",
+              "type": "",
+              "unit": "1",
+              "field": "",
+              "metric": "container_cpu_utilization",
+              "metricType": "gauge"
+            },
+            "datasourceId": "kloudmate",
+            "legendFormat": "{{instance}}",
+            "responseType": "series"
+          }
+        ]
+      },
+      {
+        "id": "dte8rjf7n88",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "percentage",
+            "decimals": 3,
+            "multiplyBy": 0.1
+          }
+        },
+        "table": {
+          "columns": [
+            {
+              "key": "A",
+              "rename": ""
+            }
+          ]
+        },
+        "title": "File system Total",
+        "panelType": "STATS",
+        "timeRange": "30m",
+        "statConfig": {
+          "format": "bytes",
+          "decimals": 2,
+          "statView": "grid",
+          "baseColor": "#4CBB17",
+          "multiplyBy": "",
+          "calculation": {
+            "label": "Last",
+            "value": "last"
+          }
+        },
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              }
+            ]
+          }
+        },
+        "node_configs": [
+          {
+            "exp": "sum(container_fs_limit_bytes{cluster=\"$cluster\", device=~\"$volume\", id=\"/\", instance=~\"$instance\"})",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "A",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "",
+            "dimensions": {},
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "SUM",
+              "type": "",
+              "unit": "1",
+              "field": "",
+              "metric": "container_cpu_utilization",
+              "metricType": "gauge"
+            },
+            "datasourceId": "kloudmate",
+            "legendFormat": "{{cluster}}",
+            "responseType": "series"
+          }
+        ]
+      },
+      {
+        "id": "02xyf5j0i5ss",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "percentage",
+            "decimals": 3,
+            "multiplyBy": 0.1
+          }
+        },
+        "table": {
+          "columns": [
+            {
+              "key": "A",
+              "rename": ""
+            }
+          ]
+        },
+        "title": "File system Used",
+        "panelType": "STATS",
+        "timeRange": "30m",
+        "statConfig": {
+          "format": "bytes",
+          "decimals": 2,
+          "statView": "grid",
+          "baseColor": "#4CBB17",
+          "multiplyBy": "",
+          "calculation": "last"
+        },
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              }
+            ]
+          }
+        },
+        "node_configs": [
+          {
+            "exp": "sum (container_fs_usage_bytes{cluster=\"$cluster\", device=~\"$volume\", id=\"/\", instance=~\"$instance\"})",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "A",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "",
+            "dimensions": {},
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "SUM",
+              "type": "",
+              "unit": "1",
+              "field": "",
+              "metric": "container_cpu_utilization",
+              "metricType": "gauge"
+            },
+            "datasourceId": "kloudmate",
+            "legendFormat": "{{cluster}}",
+            "responseType": "series"
+          }
+        ]
+      },
+      {
+        "id": "b1rkt6jcskl",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "prefix": "",
+            "suffix": "ops/s"
+          }
+        },
+        "title": "PLEG relist rate",
+        "panelType": "TimeSeries",
+        "timeRange": "30m",
+        "statConfig": {
+          "statView": "grid",
+          "baseColor": "#4CBB17",
+          "calculation": "last"
+        },
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "description": "Pod lifecycle event generator",
+        "node_configs": [
+          {
+            "exp": "sum(rate(kubelet_pleg_relist_duration_seconds_count{cluster=\"$cluster\", job!=\"\", instance=~\"$instance\"}[5m])) by (instance)",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "A",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "",
+            "dimensions": [],
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "AVG",
+              "type": "",
+              "field": ""
+            },
+            "datasourceId": "kloudmate",
+            "legendFormat": "{{instance}}",
+            "responseType": "series"
+          }
+        ]
+      },
+      {
+        "id": "6iuzzr9z34a",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "unformatted",
+            "suffix": "ops/s",
+            "decimals": 3
+          }
+        },
+        "table": {
+          "columns": [
+            {
+              "key": "A:SUM()",
+              "rename": ""
+            },
+            {
+              "key": "operation_type",
+              "rename": ""
+            },
+            {
+              "key": "k8s.node.name",
+              "rename": ""
+            }
+          ]
+        },
+        "title": "Storage Operation Rate",
+        "panelType": "TimeSeries",
+        "timeRange": "30m",
+        "statConfig": {
+          "statView": "grid",
+          "baseColor": "#4CBB17",
+          "calculation": "last"
+        },
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "node_configs": [
+          {
+            "exp": "sum(rate(storage_operation_duration_seconds_count{cluster=\"$cluster\",job!=\"\",instance=~\"$instance\"}[5m])) by (instance, operation_name, volume_plugin)",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "A",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [
+              {
+                "type": "string",
+                "field": "operation_type"
+              },
+              {
+                "type": "string",
+                "field": "k8s.node.name"
+              }
+            ],
+            "orderBy": [],
+            "interval": "60s",
+            "namespace": "",
+            "dimensions": {},
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "SUM",
+              "type": "",
+              "unit": "",
+              "field": "",
+              "metric": "kubelet_runtime_operations_total",
+              "metricType": "counter"
+            },
+            "datasourceId": "kloudmate",
+            "legendFormat": "{{instance}} {{operation_name}} {{volume_plugin}}",
+            "responseType": "series"
+          }
+        ]
+      },
+      {
+        "id": "c1o7robw33s",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "unformatted",
+            "suffix": "ops/s",
+            "decimals": 3
+          }
+        },
+        "table": {
+          "columns": [
+            {
+              "key": "A:SUM()",
+              "rename": ""
+            },
+            {
+              "key": "operation_type",
+              "rename": ""
+            },
+            {
+              "key": "k8s.node.name",
+              "rename": ""
+            }
+          ]
+        },
+        "title": "Pod Start Rate",
+        "panelType": "TimeSeries",
+        "timeRange": "30m",
+        "statConfig": {
+          "statView": "grid",
+          "baseColor": "#4CBB17",
+          "calculation": "last"
+        },
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "node_configs": [
+          {
+            "exp": "sum(rate(kubelet_pod_start_duration_seconds_count{cluster=\"$cluster\", instance=~\"$instance\"}[5m])) by (instance)",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "A",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [
+              {
+                "type": "string",
+                "field": "operation_type"
+              },
+              {
+                "type": "string",
+                "field": "k8s.node.name"
+              }
+            ],
+            "orderBy": [],
+            "interval": "60s",
+            "namespace": "",
+            "dimensions": {},
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "SUM",
+              "type": "",
+              "unit": "",
+              "field": "",
+              "metric": "kubelet_runtime_operations_total",
+              "metricType": "counter"
+            },
+            "datasourceId": "kloudmate",
+            "legendFormat": "{{instance}} pod",
+            "responseType": "series"
+          },
+          {
+            "exp": "sum(rate(kubelet_pod_worker_duration_seconds_count{cluster=\"$cluster\", instance=~\"$instance\"}[5m])) by (instance)",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "B",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [
+              {
+                "type": "string",
+                "field": "operation_type"
+              },
+              {
+                "type": "string",
+                "field": "k8s.node.name"
+              }
+            ],
+            "orderBy": [],
+            "interval": "60s",
+            "namespace": "",
+            "dimensions": {},
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "SUM",
+              "type": "",
+              "unit": "",
+              "field": "",
+              "metric": "kubelet_runtime_operations_total",
+              "metricType": "counter"
+            },
+            "datasourceId": "kloudmate",
+            "legendFormat": "{{instance}} pod",
+            "responseType": "series"
+          }
+        ]
+      },
+      {
+        "id": "0wkr97k3q7pq",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "unformatted",
+            "suffix": "ops/s",
+            "decimals": 3
+          }
+        },
+        "table": {
+          "columns": [
+            {
+              "key": "A:SUM()",
+              "rename": ""
+            },
+            {
+              "key": "operation_type",
+              "rename": ""
+            },
+            {
+              "key": "k8s.node.name",
+              "rename": ""
+            }
+          ]
+        },
+        "title": "Cgroup manager operation rate",
+        "panelType": "TimeSeries",
+        "timeRange": "30m",
+        "statConfig": {
+          "statView": "grid",
+          "baseColor": "#4CBB17",
+          "calculation": "last"
+        },
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "node_configs": [
+          {
+            "exp": "sum(rate(kubelet_cgroup_manager_duration_seconds_count{cluster=\"$cluster\", instance=~\"$instance\"}[5m])) by (instance, operation_type)",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "A",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [
+              {
+                "type": "string",
+                "field": "operation_type"
+              },
+              {
+                "type": "string",
+                "field": "k8s.node.name"
+              }
+            ],
+            "orderBy": [],
+            "interval": "60s",
+            "namespace": "",
+            "dimensions": {},
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "SUM",
+              "type": "",
+              "unit": "",
+              "field": "",
+              "metric": "kubelet_runtime_operations_total",
+              "metricType": "counter"
+            },
+            "datasourceId": "kloudmate",
+            "legendFormat": "{{operation_type}}",
+            "responseType": "series"
+          }
+        ]
+      },
+      {
+        "id": "0afq1oxyx6hc",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number"
+          }
+        },
+        "title": "All process CPU",
+        "panelType": "TimeSeries",
+        "timeRange": "1h",
+        "statConfig": {
+          "statView": "grid",
+          "baseColor": "#4CBB17",
+          "calculation": "last"
+        },
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Mean",
+                "value": "mean"
+              }
+            ]
+          }
+        },
+        "node_configs": [
+          {
+            "exp": "rate(process_cpu_seconds_total{cluster=\"$cluster\",job!=\"\",instance=~\"$instance\"}[5m])",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "A",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "",
+            "dimensions": [],
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "AVG",
+              "type": "",
+              "field": ""
+            },
+            "datasourceId": "kloudmate",
+            "legendFormat": "{{instance}}",
+            "responseType": "series"
+          }
+        ]
+      },
+      {
+        "id": "1vfi0fta3o7",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "bytes"
+          }
+        },
+        "title": "All process Memory",
+        "panelType": "TimeSeries",
+        "timeRange": "1h",
+        "statConfig": {
+          "statView": "grid",
+          "baseColor": "#4CBB17",
+          "calculation": "last"
+        },
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "node_configs": [
+          {
+            "exp": "process_resident_memory_bytes{cluster=\"$cluster\",job!=\"\",instance=~\"$instance\"}",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "A",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "",
+            "dimensions": [],
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "AVG",
+              "type": "",
+              "field": ""
+            },
+            "datasourceId": "kloudmate",
+            "legendFormat": "{{instance}}",
+            "responseType": "series"
+          }
+        ]
+      },
+      {
+        "id": "2dmnjr5x34a",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "suffix": "ops/s",
+            "decimals": 3
+          }
+        },
+        "title": "Pod Start Rate",
+        "panelType": "TimeSeries",
+        "timeRange": "1h",
+        "statConfig": {
+          "statView": "grid",
+          "baseColor": "#4CBB17",
+          "calculation": "last"
+        },
+        "timeseries": {
+          "legend": {
+            "view": "list",
+            "values": [
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "node_configs": [
+          {
+            "exp": "sum(rate(kubelet_pod_start_duration_seconds_count{cluster=\"$cluster\",job!=\"\",instance=~\"$instance\"}[5m])) by (instance)",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "A",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "",
+            "dimensions": {},
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "SUM",
+              "type": "",
+              "unit": "{restart}",
+              "field": "",
+              "metric": "k8s_container_restarts",
+              "metricType": "gauge"
+            },
+            "datasourceId": "kloudmate",
+            "legendFormat": "{{instance}} pod",
+            "responseType": "series"
+          },
+          {
+            "exp": "sum(rate(kubelet_pod_worker_duration_seconds_count{cluster=\"$cluster\",job!=\"\",instance=~\"$instance\"}[5m])) by (instance)",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "B",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "",
+            "dimensions": [],
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "AVG",
+              "type": "",
+              "field": ""
+            },
+            "datasourceId": "kloudmate",
+            "legendFormat": "{{instance}}worker",
+            "responseType": "series"
+          }
+        ]
+      },
+      {
+        "id": "6gi2v3yag44",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "duration",
+            "suffix": "",
+            "decimals": 3,
+            "multiplyBy": 1001
+          }
+        },
+        "title": "Pod Start Duration",
+        "panelType": "TimeSeries",
+        "timeRange": "1h",
+        "statConfig": {
+          "statView": "grid",
+          "baseColor": "#4CBB17",
+          "calculation": "last"
+        },
+        "timeseries": {
+          "legend": {
+            "view": "list",
+            "values": [
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "node_configs": [
+          {
+            "exp": "histogram_quantile(0.99, sum(rate(kubelet_pod_start_duration_seconds_bucket{cluster=\"$cluster\",job!=\"\",instance=~\"$instance\"}[5m])) by (instance, le))",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "A",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "",
+            "dimensions": {},
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "SUM",
+              "type": "",
+              "unit": "{restart}",
+              "field": "",
+              "metric": "k8s_container_restarts",
+              "metricType": "gauge"
+            },
+            "datasourceId": "kloudmate",
+            "legendFormat": "{{instance}} pod",
+            "responseType": "series"
+          },
+          {
+            "exp": "histogram_quantile(0.99, sum(rate(kubelet_pod_worker_duration_seconds_bucket{cluster=\"$cluster\",job!=\"\",instance=~\"$instance\"}[5m])) by (instance, le))",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "B",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "",
+            "dimensions": [],
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "AVG",
+              "type": "",
+              "field": ""
+            },
+            "datasourceId": "kloudmate",
+            "legendFormat": "{{instance}}worker",
+            "responseType": "series"
+          }
+        ]
+      },
+      {
+        "id": "natfc0qdn6c",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "unformatted",
+            "suffix": "ops/s",
+            "decimals": 3
+          }
+        },
+        "table": {
+          "columns": [
+            {
+              "key": "A:SUM()",
+              "rename": ""
+            },
+            {
+              "key": "operation_type",
+              "rename": ""
+            },
+            {
+              "key": "k8s.node.name",
+              "rename": ""
+            }
+          ]
+        },
+        "title": "Storage Operation Error Rate",
+        "panelType": "TimeSeries",
+        "timeRange": "30m",
+        "statConfig": {
+          "statView": "grid",
+          "baseColor": "#4CBB17",
+          "calculation": "last"
+        },
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "node_configs": [
+          {
+            "exp": "sum(rate(storage_operation_errors_total{cluster=\"$cluster\",job!=\"\",instance=~\"$instance\"}[5m])) by (instance, operation_name, volume_plugin)",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "A",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [
+              {
+                "type": "string",
+                "field": "operation_type"
+              },
+              {
+                "type": "string",
+                "field": "k8s.node.name"
+              }
+            ],
+            "orderBy": [],
+            "interval": "60s",
+            "namespace": "",
+            "dimensions": {},
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "SUM",
+              "type": "",
+              "unit": "",
+              "field": "",
+              "metric": "kubelet_runtime_operations_total",
+              "metricType": "counter"
+            },
+            "datasourceId": "kloudmate",
+            "legendFormat": "{{instance}} {{operation_name}} {{volume_plugin}}",
+            "responseType": "series"
+          }
+        ]
+      }
+    ],
+    "timeRange": "1h",
+    "variables": [
+      {
+        "id": "cf37847a-a719-4039-93b2-93aee55b029a",
+        "name": "Datasource",
+        "type": "query",
+        "config": {
+          "source": "cloudwatch",
+          "queryType": "datasource"
+        },
+        "description": "",
+        "usedInPanels": [],
+        "usesVariables": [],
+        "usedInVariables": []
+      },
+      {
+        "id": "e91cc319-32a5-4f86-aede-40df44da89db",
+        "name": "cluster",
+        "type": "query",
+        "config": {
+          "otel": {
+            "key": {
+              "type": "string",
+              "field": "cluster"
+            },
+            "dataset": "metrics",
+            "filters": [
+              {
+                "type": "root",
+                "field": "metric",
+                "value": "up",
+                "operator": "="
+              }
+            ]
+          },
+          "source": "cloudwatch",
+          "queryType": "otel.values"
+        },
+        "is_multi": false,
+        "description": "",
+        "usedInPanels": [],
+        "usesVariables": [],
+        "show_all_option": false,
+        "usedInVariables": []
+      },
+      {
+        "id": "3407f55c-1690-476e-8dc2-850c3e82d634",
+        "name": "Instance",
+        "type": "query",
+        "config": {
+          "otel": {
+            "key": {
+              "type": "string",
+              "field": "instance"
+            },
+            "dataset": "metrics",
+            "filters": [
+              {
+                "type": "root",
+                "field": "metric",
+                "value": "kubelet_runtime_operations_total",
+                "operator": "="
+              },
+              {
+                "type": "string",
+                "field": "cluster",
+                "value": "$cluster",
+                "operator": "="
+              }
+            ]
+          },
+          "source": "cloudwatch",
+          "queryType": "otel.values"
+        },
+        "is_multi": true,
+        "description": "",
+        "usedInPanels": [],
+        "usesVariables": [],
+        "show_all_option": true,
+        "usedInVariables": []
+      },
+      {
+        "id": "9b8d0617-cb89-48ab-b0da-4ada743c3c47",
+        "name": "volume",
+        "type": "query",
+        "config": {
+          "otel": {
+            "key": {
+              "type": "string",
+              "field": "device"
+            },
+            "dataset": "metrics",
+            "filters": [
+              {
+                "type": "string",
+                "field": "cluster",
+                "value": "$cluster",
+                "operator": "="
+              }
+            ]
+          },
+          "source": "cloudwatch",
+          "queryType": "otel.values"
+        },
+        "is_multi": false,
+        "description": "",
+        "show_all_option": false
+      }
+    ],
+    "panel_layouts": [
+      {
+        "h": 1,
+        "i": "529vks9nhq5",
+        "w": 2,
+        "x": 0,
+        "y": 0,
+        "minH": 1,
+        "minW": 2,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 1,
+        "i": "5ztqznexqyn",
+        "w": 2,
+        "x": 4,
+        "y": 0,
+        "minH": 1,
+        "minW": 2,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 1,
+        "i": "gb9lm3k5ix",
+        "w": 2,
+        "x": 2,
+        "y": 0,
+        "minH": 1,
+        "minW": 2,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 1,
+        "i": "0mwu3z301qpi",
+        "w": 2,
+        "x": 10,
+        "y": 0,
+        "minH": 1,
+        "minW": 2,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 1,
+        "i": "clrd9blv7yw",
+        "w": 2,
+        "x": 8,
+        "y": 0,
+        "minH": 1,
+        "minW": 2,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "p64h0ab3f2",
+        "w": 6,
+        "x": 0,
+        "y": 7,
+        "minH": 1,
+        "minW": 2,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "2n4s54vnjky",
+        "w": 6,
+        "x": 6,
+        "y": 7,
+        "minH": 1,
+        "minW": 2,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "4lx0l5ydyhv",
+        "w": 6,
+        "x": 0,
+        "y": 3,
+        "minH": 1,
+        "minW": 2,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "2nvn8na0nr9",
+        "w": 6,
+        "x": 6,
+        "y": 3,
+        "minH": 1,
+        "minW": 2,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "0m9iu7n57j8",
+        "w": 4,
+        "x": 0,
+        "y": 11,
+        "minH": 1,
+        "minW": 2,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 1,
+        "i": "06n47j65amxp",
+        "w": 2,
+        "x": 6,
+        "y": 0,
+        "minH": 1,
+        "minW": 2,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 1,
+        "i": "i3akj2335g",
+        "w": 4,
+        "x": 0,
+        "y": 1,
+        "minH": 1,
+        "minW": 2,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 1,
+        "i": "8g5cafj1nkc",
+        "w": 4,
+        "x": 4,
+        "y": 1,
+        "minH": 1,
+        "minW": 2,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 1,
+        "i": "7um4wyqe8ys",
+        "w": 4,
+        "x": 8,
+        "y": 1,
+        "minH": 1,
+        "minW": 2,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 1,
+        "i": "6r5jssoo3mg",
+        "w": 2,
+        "x": 4,
+        "y": 2,
+        "minH": 1,
+        "minW": 2,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 1,
+        "i": "5t2a5mlcttl",
+        "w": 2,
+        "x": 6,
+        "y": 2,
+        "minH": 1,
+        "minW": 2,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 1,
+        "i": "29plidfnlgt",
+        "w": 2,
+        "x": 0,
+        "y": 2,
+        "minH": 1,
+        "minW": 2,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 1,
+        "i": "1s51udkytgo",
+        "w": 2,
+        "x": 2,
+        "y": 2,
+        "minH": 1,
+        "minW": 2,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 1,
+        "i": "dte8rjf7n88",
+        "w": 2,
+        "x": 10,
+        "y": 2,
+        "minH": 1,
+        "minW": 2,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 1,
+        "i": "02xyf5j0i5ss",
+        "w": 2,
+        "x": 8,
+        "y": 2,
+        "minH": 1,
+        "minW": 2,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "b1rkt6jcskl",
+        "w": 4,
+        "x": 8,
+        "y": 11,
+        "minH": 1,
+        "minW": 2,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "6iuzzr9z34a",
+        "w": 6,
+        "x": 0,
+        "y": 9,
+        "minH": 1,
+        "minW": 2,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "c1o7robw33s",
+        "w": 4,
+        "x": 4,
+        "y": 11,
+        "minH": 1,
+        "minW": 2,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "0wkr97k3q7pq",
+        "w": 4,
+        "x": 8,
+        "y": 5,
+        "minH": 1,
+        "minW": 2,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "0afq1oxyx6hc",
+        "w": 6,
+        "x": 0,
+        "y": 13,
+        "minH": 1,
+        "minW": 2,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "1vfi0fta3o7",
+        "w": 6,
+        "x": 6,
+        "y": 13,
+        "minH": 1,
+        "minW": 2,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "2dmnjr5x34a",
+        "w": 4,
+        "x": 0,
+        "y": 5,
+        "minH": 1,
+        "minW": 2,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "6gi2v3yag44",
+        "w": 4,
+        "x": 4,
+        "y": 5,
+        "minH": 1,
+        "minW": 2,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "natfc0qdn6c",
+        "w": 6,
+        "x": 6,
+        "y": 9,
+        "minH": 1,
+        "minW": 2,
+        "moved": false,
+        "static": false
+      }
+    ],
+    "default_region": "undefined"
+  },
+  "tags": [
+    "Kubernetes:kubelet"
+  ]
+}
