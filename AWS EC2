@@ -1,0 +1,699 @@
+{
+  "name": "AWS EC2",
+  "description": "",
+  "data": {
+    "tz": "local",
+    "panels": [
+      {
+        "id": "a05079c7-37dd-4336-8d7e-8745ea698f4f",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "percentage",
+            "decimals": 1,
+            "multiplyBy": 0.01
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "CPU Utilization",
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "description": "CPU utilization of EC2 instance",
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "CPUUtilization",
+            "nodeId": "A",
+            "period": 60,
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/EC2",
+            "dimensions": {
+              "InstanceId": [
+                "$Instance id"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "8e4d281a-1ba7-4783-bcaa-f0e6a611b2bb",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "decimals": 1,
+            "multiplyBy": ""
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "CPU Credit",
+        "folder_id": "dsh_lUgXPJum6Lcz",
+        "timeRange": "1d",
+        "created_by": "u_Z927CW7qFDi7",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "updated_by": "u_Z927CW7qFDi7",
+        "description": "",
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "CPUCreditUsage",
+            "nodeId": "A",
+            "period": 60,
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/EC2",
+            "dimensions": {
+              "InstanceId": [
+                "$Instance id"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          },
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "CPUCreditBalance",
+            "nodeId": "B",
+            "period": 60,
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/EC2",
+            "dimensions": {
+              "InstanceId": [
+                "$Instance id"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ],
+        "workspace_id": "ws_Fa371fFkW2Y1"
+      },
+      {
+        "id": "efffe221-3577-450c-95a3-07b251b999a8",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "decimals": 1,
+            "multiplyBy": ""
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "Status Check",
+        "folder_id": "dsh_lUgXPJum6Lcz",
+        "timeRange": "1d",
+        "created_by": "u_Z927CW7qFDi7",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "updated_by": "u_Z927CW7qFDi7",
+        "description": "",
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "StatusCheckFailed",
+            "nodeId": "A",
+            "period": 60,
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/EC2",
+            "dimensions": {
+              "InstanceId": [
+                "$Instance id"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          },
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "StatusCheckFailed_Instance",
+            "nodeId": "B",
+            "period": 60,
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/EC2",
+            "dimensions": {
+              "InstanceId": [
+                "$Instance id"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          },
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "StatusCheckFailed_System",
+            "nodeId": "C",
+            "period": 60,
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/EC2",
+            "dimensions": {
+              "InstanceId": [
+                "$Instance id"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ],
+        "workspace_id": "ws_Fa371fFkW2Y1"
+      },
+      {
+        "id": "4e318f76-2d3e-4f91-a911-562b3f14227c",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "bytes",
+            "decimals": 1,
+            "multiplyBy": ""
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "Network",
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "description": "The network in and out of selected instance",
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "NetworkIn",
+            "nodeId": "A",
+            "period": 60,
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/EC2",
+            "dimensions": {
+              "InstanceId": [
+                "$Instance id"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          },
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "NetworkOut",
+            "nodeId": "B",
+            "period": 60,
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/EC2",
+            "dimensions": {
+              "InstanceId": [
+                "$Instance id"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "ed44ec6f-fff7-4750-bab4-eae44a593be8",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "decimals": 1,
+            "multiplyBy": ""
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "NetworkPackets",
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "description": "The network Packet in and out of the selected instance",
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "NetworkPacketsIn",
+            "nodeId": "A",
+            "period": 60,
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/EC2",
+            "dimensions": {
+              "InstanceId": [
+                "$Instance id"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          },
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "NetworkPacketsOut",
+            "nodeId": "B",
+            "period": 60,
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/EC2",
+            "dimensions": {
+              "InstanceId": [
+                "$Instance id"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "9f437682-df58-405f-b8c9-59eafbc7ccd2",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "decimals": 1,
+            "multiplyBy": ""
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "DiskOps",
+        "folder_id": "dsh_lUgXPJum6Lcz",
+        "timeRange": "1d",
+        "created_by": "u_Z927CW7qFDi7",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "updated_by": "u_Z927CW7qFDi7",
+        "description": "",
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "DiskReadOps",
+            "nodeId": "A",
+            "period": 60,
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/EC2",
+            "dimensions": {
+              "InstanceId": [
+                "$Instance id"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          },
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "DiskWriteBytes",
+            "nodeId": "B",
+            "period": 60,
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/EC2",
+            "dimensions": {
+              "InstanceId": [
+                "$Instance id"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ],
+        "workspace_id": "ws_Fa371fFkW2Y1"
+      },
+      {
+        "id": "148ba3f1-d6f7-48ac-9b60-4b02fd1552ff",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "bytes",
+            "decimals": 1,
+            "multiplyBy": ""
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "DiskBytes",
+        "folder_id": "dsh_lUgXPJum6Lcz",
+        "timeRange": "1d",
+        "created_by": "u_Z927CW7qFDi7",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "updated_by": "u_Z927CW7qFDi7",
+        "description": "",
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "DiskReadBytes",
+            "nodeId": "A",
+            "period": 60,
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/EC2",
+            "dimensions": {
+              "InstanceId": [
+                "$Instance id"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          },
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "DiskWriteBytes",
+            "nodeId": "B",
+            "period": 60,
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/EC2",
+            "dimensions": {
+              "InstanceId": [
+                "$Instance id"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ],
+        "workspace_id": "ws_Fa371fFkW2Y1"
+      }
+    ],
+    "timeRange": "1d",
+    "variables": [
+      {
+        "id": "8c692014-3cb3-11ee-be56-0242ac120002",
+        "name": "Datasource",
+        "type": "query",
+        "config": {
+          "source": "cloudwatch",
+          "queryType": "datasource"
+        },
+        "description": ""
+      },
+      {
+        "id": "53eb3e7b-0f0a-4d49-b633-57acb502b853",
+        "name": "Region",
+        "type": "query",
+        "config": {
+          "source": "kloudmate",
+          "queryType": "regions",
+          "datasourceId": "$Datasource"
+        },
+        "folder_id": "dsh_lUgXPJum6Lcz",
+        "created_by": "u_Z927CW7qFDi7",
+        "updated_by": "u_Z927CW7qFDi7",
+        "description": "",
+        "workspace_id": "ws_Fa371fFkW2Y1"
+      },
+      {
+        "id": "1f013231-0b51-46ed-8579-816959002780",
+        "name": "Instance id",
+        "type": "query",
+        "config": {
+          "source": "kloudmate",
+          "metrics": "CPUUtilization",
+          "regions": "$Region",
+          "queryType": "dimension_values",
+          "datasource": "$Datasource",
+          "dimensions": {},
+          "namespaces": "AWS/EC2",
+          "datasourceId": "$Datasource",
+          "dimension_keys": "InstanceId"
+        },
+        "description": "The instance ID of EC2 server"
+      }
+    ],
+    "panel_layouts": [
+      {
+        "h": 4,
+        "i": "a05079c7-37dd-4336-8d7e-8745ea698f4f",
+        "w": 9,
+        "x": 3,
+        "y": 0,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "8e4d281a-1ba7-4783-bcaa-f0e6a611b2bb",
+        "w": 3,
+        "x": 0,
+        "y": 2,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "efffe221-3577-450c-95a3-07b251b999a8",
+        "w": 3,
+        "x": 0,
+        "y": 0,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 3,
+        "i": "4e318f76-2d3e-4f91-a911-562b3f14227c",
+        "w": 6,
+        "x": 0,
+        "y": 4,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 3,
+        "i": "ed44ec6f-fff7-4750-bab4-eae44a593be8",
+        "w": 6,
+        "x": 6,
+        "y": 4,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 3,
+        "i": "9f437682-df58-405f-b8c9-59eafbc7ccd2",
+        "w": 6,
+        "x": 6,
+        "y": 7,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 3,
+        "i": "148ba3f1-d6f7-48ac-9b60-4b02fd1552ff",
+        "w": 6,
+        "x": 0,
+        "y": 7,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      }
+    ],
+    "default_region": "us-east-1"
+  },
+  "tags": [
+    "AWS::EC2::Instance"
+  ]
+}
