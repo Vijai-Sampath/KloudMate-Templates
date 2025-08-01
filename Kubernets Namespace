@@ -1,0 +1,1997 @@
+{
+  "name": "kubernets-namespace",
+  "description": "",
+  "data": {
+    "tz": "local",
+    "panels": [
+      {
+        "id": "7iayf7psr8h",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          }
+        },
+        "title": "CPU Utilisation (from requests)",
+        "panelType": "STATS",
+        "timeRange": "15m",
+        "statConfig": {
+          "format": "percentage",
+          "decimals": 2,
+          "statView": "grid",
+          "baseColor": "#4CBB17",
+          "multiplyBy": "",
+          "calculation": {
+            "label": "Mean",
+            "value": "mean"
+          }
+        },
+        "timeseries": {
+          "legend": {
+            "view": "list",
+            "values": []
+          }
+        },
+        "node_configs": [
+          {
+            "exp": "sum(sum by (cluster, namespace, pod, container) (\r\n  rate(container_cpu_usage_seconds_total{job!=\"\", image!=\"\", cluster=\"$cluster\", namespace=\"$namespace\"}[5m])\r\n) * on (cluster, namespace, pod) group_left(node) topk by (cluster, namespace, pod) (\r\n  1, max by(cluster, namespace, pod, node) (kube_pod_info{node!=\"\", cluster=\"$cluster\", namespace=\"$namespace\"})\r\n) ) / sum(kube_pod_container_resource_requests{job!=\"\", cluster=\"$cluster\", namespace=\"$namespace\", resource=\"cpu\"})\r\n",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "A",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "",
+            "dimensions": [],
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "AVG",
+              "type": "",
+              "field": ""
+            },
+            "datasourceId": "kloudmate",
+            "legendFormat": "{{pod}}",
+            "responseType": "series"
+          }
+        ]
+      },
+      {
+        "id": "8e7de9kp7vk",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          }
+        },
+        "title": "CPU Utilisation (from limits)",
+        "panelType": "STATS",
+        "timeRange": "1h",
+        "statConfig": {
+          "format": "percentage",
+          "statView": "grid",
+          "baseColor": "#4CBB17",
+          "multiplyBy": "",
+          "calculation": {
+            "label": "Mean",
+            "value": "mean"
+          }
+        },
+        "timeseries": {
+          "legend": {
+            "view": "list",
+            "values": []
+          }
+        },
+        "node_configs": [
+          {
+            "exp": "sum(sum by (cluster, namespace, pod, container) (\r\n  rate(container_cpu_usage_seconds_total{job!=\"\", image!=\"\", cluster=\"$cluster\", namespace=\"$namespace\"}[5m])\r\n) * on (cluster, namespace, pod) group_left(node) topk by (cluster, namespace, pod) (\r\n  1, max by(cluster, namespace, pod, node) (kube_pod_info{node!=\"\", cluster=\"$cluster\", namespace=\"$namespace\"})\r\n)) / sum(kube_pod_container_resource_limits{job!=\"\", cluster=\"$cluster\", namespace=\"$namespace\", resource=\"cpu\"})\r\n",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "A",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "",
+            "dimensions": [],
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "AVG",
+              "type": "",
+              "field": ""
+            },
+            "datasourceId": "kloudmate",
+            "responseType": "series"
+          }
+        ]
+      },
+      {
+        "id": "8tr1bshvyc9",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          }
+        },
+        "title": "Memory Utilisation (from requests)",
+        "panelType": "STATS",
+        "timeRange": "1h",
+        "statConfig": {
+          "format": "percentage",
+          "statView": "grid",
+          "baseColor": "#4CBB17",
+          "multiplyBy": "",
+          "calculation": {
+            "label": "Mean",
+            "value": "mean"
+          }
+        },
+        "timeseries": {
+          "legend": {
+            "view": "list",
+            "values": []
+          }
+        },
+        "node_configs": [
+          {
+            "exp": "sum(container_memory_working_set_bytes{job!=\"\", cluster=\"$cluster\", namespace=\"$namespace\",container!=\"\", image!=\"\"}) / sum(kube_pod_container_resource_requests{job!=\"\", cluster=\"$cluster\", namespace=\"$namespace\", resource=\"memory\"})",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "A",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "",
+            "dimensions": [],
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "AVG",
+              "type": "",
+              "field": ""
+            },
+            "datasourceId": "kloudmate",
+            "responseType": "series"
+          }
+        ]
+      },
+      {
+        "id": "dqgr7y0njdn",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          }
+        },
+        "title": "Memory Utilisation (from limits)",
+        "panelType": "STATS",
+        "timeRange": "1h",
+        "statConfig": {
+          "format": "percentage",
+          "statView": "grid",
+          "baseColor": "#4CBB17",
+          "multiplyBy": "",
+          "calculation": {
+            "label": "Mean",
+            "value": "mean"
+          }
+        },
+        "timeseries": {
+          "legend": {
+            "view": "list",
+            "values": []
+          }
+        },
+        "node_configs": [
+          {
+            "exp": "sum(container_memory_working_set_bytes{job!=\"\", cluster=\"$cluster\", namespace=\"$namespace\",container!=\"\", image!=\"\"}) / sum(kube_pod_container_resource_limits{job!=\"\", cluster=\"$cluster\", namespace=\"$namespace\", resource=\"memory\"})",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "A",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "",
+            "dimensions": [],
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "AVG",
+              "type": "",
+              "field": ""
+            },
+            "datasourceId": "kloudmate",
+            "responseType": "series"
+          }
+        ]
+      },
+      {
+        "id": "lkl1bft4vpo",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number"
+          }
+        },
+        "title": "CPU Usage",
+        "panelType": "TimeSeries",
+        "timeRange": "1h",
+        "statConfig": {
+          "format": "percentage",
+          "statView": "grid",
+          "baseColor": "#4CBB17",
+          "multiplyBy": 0.01,
+          "calculation": {
+            "label": "Mean",
+            "value": "mean"
+          }
+        },
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              }
+            ]
+          }
+        },
+        "node_configs": [
+          {
+            "exp": "sum(sum by (cluster, namespace, pod, container) (\r\n  rate(container_cpu_usage_seconds_total{job!=\"\", image!=\"\", cluster=\"$cluster\", namespace=\"$namespace\"}[5m])\r\n) * on (cluster, namespace, pod) group_left(node) topk by (cluster, namespace, pod) (\r\n  1, max by(cluster, namespace, pod, node) (kube_pod_info{node!=\"\", cluster=\"$cluster\", namespace=\"$namespace\"})\r\n)) by (pod)",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "A",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "",
+            "dimensions": [],
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "AVG",
+              "type": "",
+              "field": ""
+            },
+            "datasourceId": "kloudmate",
+            "legendFormat": "{{pod}}",
+            "responseType": "series"
+          },
+          {
+            "exp": "scalar(kube_resourcequota{cluster=\"$cluster\", namespace=\"$namespace\", type=\"hard\",resource=\"requests.cpu\"})",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "B",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "",
+            "dimensions": [],
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "AVG",
+              "type": "",
+              "field": ""
+            },
+            "datasourceId": "kloudmate",
+            "legendFormat": "quota - requests",
+            "responseType": "series"
+          },
+          {
+            "exp": "scalar(kube_resourcequota{cluster=\"$cluster\", namespace=\"$namespace\", type=\"hard\",resource=\"limits.cpu\"})",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "C",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "",
+            "dimensions": [],
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "AVG",
+              "type": "",
+              "field": ""
+            },
+            "datasourceId": "kloudmate",
+            "legendFormat": "quota - limits",
+            "responseType": "series"
+          }
+        ]
+      },
+      {
+        "id": "6gro2x8e38g",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "bytes"
+          }
+        },
+        "title": "Memory Usage",
+        "panelType": "TimeSeries",
+        "timeRange": "1h",
+        "statConfig": {
+          "format": "percentage",
+          "statView": "grid",
+          "baseColor": "#4CBB17",
+          "multiplyBy": 0.01,
+          "calculation": {
+            "label": "Mean",
+            "value": "mean"
+          }
+        },
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              }
+            ]
+          }
+        },
+        "node_configs": [
+          {
+            "exp": "sum(container_memory_working_set_bytes{job!=\"\", cluster=\"$cluster\", namespace=\"$namespace\", container!=\"\", image!=\"\"}) by (pod)",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "A",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "",
+            "dimensions": [],
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "AVG",
+              "type": "",
+              "field": ""
+            },
+            "datasourceId": "kloudmate",
+            "legendFormat": "{{pod}}",
+            "responseType": "series"
+          },
+          {
+            "exp": "scalar(kube_resourcequota{cluster=\"$cluster\", namespace=\"$namespace\", type=\"hard\",resource=\"requests.memory\"})",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "B",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "",
+            "dimensions": [],
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "AVG",
+              "type": "",
+              "field": ""
+            },
+            "datasourceId": "kloudmate",
+            "legendFormat": "quota - requests",
+            "responseType": "series"
+          },
+          {
+            "exp": "scalar(kube_resourcequota{cluster=\"$cluster\", namespace=\"$namespace\", type=\"hard\",resource=\"limits.memory\"})",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "C",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "",
+            "dimensions": [],
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "AVG",
+              "type": "",
+              "field": ""
+            },
+            "datasourceId": "kloudmate",
+            "legendFormat": "quota - limits",
+            "responseType": "series"
+          }
+        ]
+      },
+      {
+        "id": "9ok218dm3y",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          }
+        },
+        "table": {
+          "columns": [
+            {
+              "key": "A",
+              "format": {
+                "format": "number"
+              },
+              "rename": "Usages"
+            },
+            {
+              "key": "B",
+              "rename": "Request"
+            },
+            {
+              "key": "C",
+              "format": {
+                "format": "percentage",
+                "multiplyBy": ""
+              },
+              "rename": "Request Percentage"
+            },
+            {
+              "key": "D",
+              "format": {
+                "format": "number"
+              },
+              "rename": "Limits"
+            },
+            {
+              "key": "E",
+              "format": {
+                "format": "percentage"
+              },
+              "rename": "Limits percentage"
+            }
+          ]
+        },
+        "title": "CPU",
+        "panelType": "table",
+        "timeRange": "1h",
+        "statConfig": {
+          "statView": "grid",
+          "baseColor": "#4CBB17",
+          "calculation": "last"
+        },
+        "timeseries": {
+          "legend": {
+            "view": "list",
+            "values": []
+          }
+        },
+        "node_configs": [
+          {
+            "exp": "sum(sum by (cluster, namespace, pod, container) (\r\n  rate(container_cpu_usage_seconds_total{job!=\"\", image!=\"\", cluster=\"$cluster\", namespace=\"$namespace\"}[5m])\r\n) * on (cluster, namespace, pod) group_left(node) topk by (cluster, namespace, pod) (\r\n  1, max by(cluster, namespace, pod, node) (kube_pod_info{node!=\"\", cluster=\"$cluster\", namespace=\"$namespace\"})\r\n) )  by (pod)",
+            "stat": "",
+            "type": "query",
+            "limit": null,
+            "hidden": false,
+            "metric": "",
+            "nodeId": "A",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [],
+            "orderBy": [
+              {
+                "order": "desc"
+              }
+            ],
+            "interval": "",
+            "namespace": "",
+            "dimensions": [],
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "AVG",
+              "type": "",
+              "field": ""
+            },
+            "datasourceId": "kloudmate",
+            "responseType": "number"
+          },
+          {
+            "exp": "sum(kube_pod_container_resource_requests{job!=\"\",resource=\"cpu\", cluster=\"$cluster\", namespace=\"$namespace\"} * on (namespace, pod, cluster) group_left () max by (namespace, pod, cluster) ((kube_pod_status_phase{phase=~\"Pending|Running\"} == 1))) by (pod)",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "B",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "",
+            "dimensions": [],
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "AVG",
+              "type": "",
+              "field": ""
+            },
+            "datasourceId": "kloudmate",
+            "responseType": "number"
+          },
+          {
+            "exp": "sum(sum by (cluster, namespace, pod, container) (\r\n  rate(container_cpu_usage_seconds_total{job!=\"\", image!=\"\", cluster=\"$cluster\", namespace=\"$namespace\"}[5m])\r\n) * on (cluster, namespace, pod) group_left(node) topk by (cluster, namespace, pod) (\r\n  1, max by(cluster, namespace, pod, node) (kube_pod_info{node!=\"\", cluster=\"$cluster\", namespace=\"$namespace\"})\r\n) )  by (pod) /  sum(kube_pod_container_resource_requests{job!=\"\",resource=\"cpu\", cluster=\"$cluster\", namespace=\"$namespace\"} * on (namespace, pod, cluster) group_left () max by (namespace, pod, cluster) ((kube_pod_status_phase{phase=~\"Pending|Running\"} == 1))) by (pod)",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "C",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "",
+            "dimensions": [],
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "AVG",
+              "type": "",
+              "field": ""
+            },
+            "datasourceId": "kloudmate",
+            "responseType": "number"
+          },
+          {
+            "exp": "sum(kube_pod_container_resource_limits{job!=\"\", resource=\"cpu\", cluster=\"$cluster\", namespace=\"$namespace\"} * on (namespace, pod, cluster) group_left () max by (namespace, pod, cluster) ((kube_pod_status_phase{phase=~\"Pending|Running\", cluster=\"$cluster\", namespace=\"$namespace\"} == 1))) by (pod)",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "D",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "",
+            "dimensions": [],
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "AVG",
+              "type": "",
+              "field": ""
+            },
+            "datasourceId": "kloudmate",
+            "responseType": "number"
+          },
+          {
+            "exp": "sum(sum by (cluster, namespace, pod, container) (\r\n  rate(container_cpu_usage_seconds_total{job!=\"\", image!=\"\", cluster=\"$cluster\", namespace=\"$namespace\"}[5m])\r\n) * on (cluster, namespace, pod) group_left(node) topk by (cluster, namespace, pod) (\r\n  1, max by(cluster, namespace, pod, node) (kube_pod_info{node!=\"\", cluster=\"$cluster\", namespace=\"$namespace\"})\r\n) )  by (pod) / sum(kube_pod_container_resource_limits{job!=\"\", resource=\"cpu\", cluster=\"$cluster\", namespace=\"$namespace\"} * on (namespace, pod, cluster) group_left () max by (namespace, pod, cluster) ((kube_pod_status_phase{phase=~\"Pending|Running\", cluster=\"$cluster\", namespace=\"$namespace\"} == 1))) by (pod)",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "E",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "",
+            "dimensions": [],
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "AVG",
+              "type": "",
+              "field": ""
+            },
+            "datasourceId": "kloudmate",
+            "responseType": "number"
+          }
+        ]
+      },
+      {
+        "id": "i95v2e21jii",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          }
+        },
+        "table": {
+          "columns": [
+            {
+              "key": "A",
+              "format": {
+                "format": "bytes",
+                "decimals": 2
+              },
+              "rename": "Usages"
+            },
+            {
+              "key": "B",
+              "format": {
+                "format": "bytes",
+                "decimals": 2
+              },
+              "rename": "Request"
+            },
+            {
+              "key": "C",
+              "format": {
+                "format": "percentage",
+                "multiplyBy": ""
+              },
+              "rename": "Request Percentage"
+            },
+            {
+              "key": "D",
+              "format": {
+                "format": "bytes",
+                "decimals": 2
+              },
+              "rename": "Limits"
+            },
+            {
+              "key": "E",
+              "format": {
+                "format": "percentage"
+              },
+              "rename": "Limits percentage"
+            },
+            {
+              "key": "F",
+              "format": {
+                "format": "bytes",
+                "decimals": 2
+              },
+              "rename": "Usages (RSS)"
+            },
+            {
+              "key": "G",
+              "format": {
+                "format": "bytes",
+                "decimals": 2
+              },
+              "rename": "Usages (cache)"
+            },
+            {
+              "key": "H",
+              "format": {
+                "format": "bytes",
+                "decimals": 2
+              },
+              "rename": "Usages (swap)"
+            }
+          ]
+        },
+        "title": "Memory",
+        "panelType": "table",
+        "timeRange": "1h",
+        "statConfig": {
+          "statView": "grid",
+          "baseColor": "#4CBB17",
+          "calculation": "last"
+        },
+        "timeseries": {
+          "legend": {
+            "view": "list",
+            "values": []
+          }
+        },
+        "node_configs": [
+          {
+            "exp": "sum(container_memory_working_set_bytes{job!=\"\", cluster=\"$cluster\", namespace=\"$namespace\",container!=\"\", image!=\"\"}) by (pod)",
+            "stat": "",
+            "type": "query",
+            "limit": null,
+            "hidden": false,
+            "metric": "",
+            "nodeId": "A",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [],
+            "orderBy": [
+              {
+                "order": "desc"
+              }
+            ],
+            "interval": "",
+            "namespace": "",
+            "dimensions": [],
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "AVG",
+              "type": "",
+              "field": ""
+            },
+            "datasourceId": "kloudmate",
+            "responseType": "number"
+          },
+          {
+            "exp": "sum(kube_pod_container_resource_requests{job!=\"\", resource=\"memory\", cluster=\"$cluster\", namespace=\"$namespace\"} * on (namespace, pod, cluster) group_left () max by (namespace, pod, cluster) ((kube_pod_status_phase{phase=~\"Pending|Running\", cluster=\"$cluster\", namespace=\"$namespace\"} == 1))) by (pod)",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "B",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "",
+            "dimensions": [],
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "AVG",
+              "type": "",
+              "field": ""
+            },
+            "datasourceId": "kloudmate",
+            "responseType": "number"
+          },
+          {
+            "exp": "sum(container_memory_working_set_bytes{job!=\"\", cluster=\"$cluster\", namespace=\"$namespace\",container!=\"\", image!=\"\"}) by (pod) / sum(kube_pod_container_resource_requests{job!=\"\", resource=\"memory\", cluster=\"$cluster\", namespace=\"$namespace\"} * on (namespace, pod, cluster) group_left () max by (namespace, pod, cluster) ((kube_pod_status_phase{phase=~\"Pending|Running\", cluster=\"$cluster\", namespace=\"$namespace\"} == 1))) by (pod)",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "C",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "",
+            "dimensions": [],
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "AVG",
+              "type": "",
+              "field": ""
+            },
+            "datasourceId": "kloudmate",
+            "responseType": "number"
+          },
+          {
+            "exp": "sum(kube_pod_container_resource_limits{job!=\"\", resource=\"memory\", cluster=\"$cluster\", namespace=\"$namespace\"} * on (namespace, pod, cluster) group_left () max by (namespace, pod, cluster) ((kube_pod_status_phase{phase=~\"Pending|Running\", cluster=\"$cluster\", namespace=\"$namespace\"} == 1))) by (pod)",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "D",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "",
+            "dimensions": [],
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "AVG",
+              "type": "",
+              "field": ""
+            },
+            "datasourceId": "kloudmate",
+            "responseType": "number"
+          },
+          {
+            "exp": "sum(container_memory_working_set_bytes{job!=\"\", cluster=\"$cluster\", namespace=\"$namespace\",container!=\"\", image!=\"\"}) by (pod) / sum(kube_pod_container_resource_limits{job!=\"\", resource=\"memory\", cluster=\"$cluster\", namespace=\"$namespace\"} * on (namespace, pod, cluster) group_left () max by (namespace, pod, cluster) ((kube_pod_status_phase{phase=~\"Pending|Running\", cluster=\"$cluster\", namespace=\"$namespace\"} == 1))) by (pod)",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "E",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "",
+            "dimensions": [],
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "AVG",
+              "type": "",
+              "field": ""
+            },
+            "datasourceId": "kloudmate",
+            "responseType": "number"
+          },
+          {
+            "exp": "sum(container_memory_rss{job!=\"\", cluster=\"$cluster\", namespace=\"$namespace\",container!=\"\"}) by (pod)",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "F",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "",
+            "dimensions": [],
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "AVG",
+              "type": "",
+              "field": ""
+            },
+            "datasourceId": "kloudmate",
+            "responseType": "number"
+          },
+          {
+            "exp": "sum(container_memory_cache{job!=\"\", cluster=\"$cluster\", namespace=\"$namespace\",container!=\"\"}) by (pod)",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "G",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "",
+            "dimensions": [],
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "AVG",
+              "type": "",
+              "field": ""
+            },
+            "datasourceId": "kloudmate",
+            "responseType": "number"
+          },
+          {
+            "exp": "sum(container_memory_swap{job!=\"\", cluster=\"$cluster\", namespace=\"$namespace\",container!=\"\"}) by (pod)",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "H",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "",
+            "dimensions": [],
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "AVG",
+              "type": "",
+              "field": ""
+            },
+            "datasourceId": "kloudmate",
+            "responseType": "number"
+          }
+        ]
+      },
+      {
+        "id": "dkb63toyq6",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          }
+        },
+        "table": {
+          "columns": [
+            {
+              "key": "A",
+              "format": {
+                "format": "bytes",
+                "suffix": "/s",
+                "decimals": 2
+              },
+              "rename": "Incoming Requests"
+            },
+            {
+              "key": "B",
+              "format": {
+                "format": "bytes",
+                "suffix": "/s",
+                "decimals": 2
+              },
+              "rename": "Outgoing Requests"
+            },
+            {
+              "key": "C",
+              "format": {
+                "format": "number",
+                "suffix": "p/s",
+                "decimals": 2,
+                "multiplyBy": ""
+              },
+              "rename": "Packets Received "
+            },
+            {
+              "key": "D",
+              "format": {
+                "format": "number",
+                "suffix": "p/s",
+                "decimals": 2
+              },
+              "rename": "Packets Transmitted "
+            },
+            {
+              "key": "E",
+              "format": {
+                "format": "number",
+                "suffix": "p/s",
+                "decimals": 2
+              },
+              "rename": "Received Packets Dropped"
+            },
+            {
+              "key": "F",
+              "format": {
+                "format": "number",
+                "suffix": "p/s",
+                "decimals": 2
+              },
+              "rename": "Transmitted Packets Dropped"
+            }
+          ]
+        },
+        "title": "Network usages",
+        "panelType": "table",
+        "timeRange": "1h",
+        "statConfig": {
+          "statView": "grid",
+          "baseColor": "#4CBB17",
+          "calculation": "last"
+        },
+        "timeseries": {
+          "legend": {
+            "view": "list",
+            "values": []
+          }
+        },
+        "node_configs": [
+          {
+            "exp": "sum(rate(container_network_receive_bytes_total{job!=\"\", cluster=\"$cluster\", namespace=\"$namespace\"}[5m])) by (pod)",
+            "stat": "",
+            "type": "query",
+            "limit": null,
+            "hidden": false,
+            "metric": "",
+            "nodeId": "A",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [],
+            "orderBy": [
+              {
+                "order": "desc"
+              }
+            ],
+            "interval": "",
+            "namespace": "",
+            "dimensions": [],
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "AVG",
+              "type": "",
+              "field": ""
+            },
+            "datasourceId": "kloudmate",
+            "responseType": "number"
+          },
+          {
+            "exp": "sum(rate(container_network_transmit_bytes_total{job!=\"\", cluster=\"$cluster\", namespace=\"$namespace\"}[5m])) by (pod)",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "B",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "",
+            "dimensions": [],
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "AVG",
+              "type": "",
+              "field": ""
+            },
+            "datasourceId": "kloudmate",
+            "responseType": "number"
+          },
+          {
+            "exp": "sum(rate(container_network_receive_packets_total{job!=\"\", cluster=\"$cluster\", namespace=\"$namespace\"}[5m])) by (pod)",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "C",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "",
+            "dimensions": [],
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "AVG",
+              "type": "",
+              "field": ""
+            },
+            "datasourceId": "kloudmate",
+            "responseType": "number"
+          },
+          {
+            "exp": "sum(rate(container_network_transmit_packets_total{job!=\"\", cluster=\"$cluster\", namespace=\"$namespace\"}[5m])) by (pod)",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "D",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "",
+            "dimensions": [],
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "AVG",
+              "type": "",
+              "field": ""
+            },
+            "datasourceId": "kloudmate",
+            "responseType": "number"
+          },
+          {
+            "exp": "sum(rate(container_network_receive_packets_dropped_total{job!=\"\", cluster=\"$cluster\", namespace=\"$namespace\"}[5m])) by (pod)",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "E",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "",
+            "dimensions": [],
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "AVG",
+              "type": "",
+              "field": ""
+            },
+            "datasourceId": "kloudmate",
+            "responseType": "number"
+          },
+          {
+            "exp": "sum(rate(container_network_transmit_packets_dropped_total{job!=\"\", cluster=\"$cluster\", namespace=\"$namespace\"}[5m])) by (pod)",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "F",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "",
+            "dimensions": [],
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "AVG",
+              "type": "",
+              "field": ""
+            },
+            "datasourceId": "kloudmate",
+            "responseType": "number"
+          }
+        ]
+      },
+      {
+        "id": "9kemm87uhto",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "bytes",
+            "suffix": "/s",
+            "decimals": 2
+          }
+        },
+        "title": "Receive Bandwidth",
+        "panelType": "TimeSeries",
+        "timeRange": "1h",
+        "statConfig": {
+          "statView": "grid",
+          "baseColor": "#4CBB17",
+          "calculation": "last"
+        },
+        "timeseries": {
+          "legend": {
+            "view": "list",
+            "values": []
+          }
+        },
+        "node_configs": [
+          {
+            "exp": "sum(rate(container_network_receive_bytes_total{cluster=\"$cluster\", namespace=\"$namespace\"}[5m])) by (pod)",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "A",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "",
+            "dimensions": [],
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "AVG",
+              "type": "",
+              "field": ""
+            },
+            "datasourceId": "kloudmate",
+            "legendFormat": "{{pod}}",
+            "responseType": "series"
+          }
+        ]
+      },
+      {
+        "id": "bgetj1h1uo",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "bytes",
+            "suffix": "/s",
+            "decimals": 2
+          }
+        },
+        "title": "Transmit Bandwidth",
+        "panelType": "TimeSeries",
+        "timeRange": "1h",
+        "statConfig": {
+          "statView": "grid",
+          "baseColor": "#4CBB17",
+          "calculation": "last"
+        },
+        "timeseries": {
+          "legend": {
+            "view": "list",
+            "values": []
+          }
+        },
+        "node_configs": [
+          {
+            "exp": "sum(rate(container_network_transmit_bytes_total{cluster=\"$cluster\", namespace=\"$namespace\"}[5m])) by (pod)",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "A",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "",
+            "dimensions": [],
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "AVG",
+              "type": "",
+              "field": ""
+            },
+            "datasourceId": "kloudmate",
+            "legendFormat": "{{pod}}",
+            "responseType": "series"
+          }
+        ]
+      },
+      {
+        "id": "bstujmzhtkd",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "suffix": "p/s",
+            "decimals": 2
+          }
+        },
+        "title": "Rate of Received Packets",
+        "panelType": "TimeSeries",
+        "timeRange": "1h",
+        "statConfig": {
+          "statView": "grid",
+          "baseColor": "#4CBB17",
+          "calculation": "last"
+        },
+        "timeseries": {
+          "legend": {
+            "view": "list",
+            "values": []
+          }
+        },
+        "node_configs": [
+          {
+            "exp": "sum(rate(container_network_receive_packets_total{cluster=\"$cluster\", namespace=\"$namespace\"}[5m])) by (pod)",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "A",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "",
+            "dimensions": [],
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "AVG",
+              "type": "",
+              "field": ""
+            },
+            "datasourceId": "kloudmate",
+            "legendFormat": "{{pod}}",
+            "responseType": "series"
+          }
+        ]
+      },
+      {
+        "id": "pd3brsg93jh",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "suffix": "p/s",
+            "decimals": 2
+          }
+        },
+        "title": "Rate of Transmitted Packets",
+        "panelType": "TimeSeries",
+        "timeRange": "1h",
+        "statConfig": {
+          "statView": "grid",
+          "baseColor": "#4CBB17",
+          "calculation": "last"
+        },
+        "timeseries": {
+          "legend": {
+            "view": "list",
+            "values": []
+          }
+        },
+        "node_configs": [
+          {
+            "exp": "sum(rate(container_network_transmit_packets_total{cluster=\"$cluster\", namespace=\"$namespace\"}[5m])) by (pod)",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "A",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "",
+            "dimensions": [],
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "AVG",
+              "type": "",
+              "field": ""
+            },
+            "datasourceId": "kloudmate",
+            "legendFormat": "{{pod}}",
+            "responseType": "series"
+          }
+        ]
+      },
+      {
+        "id": "4fnss2v52pj",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "suffix": "p/s",
+            "decimals": 2
+          }
+        },
+        "title": "Rate of Received Packets Dropped",
+        "panelType": "TimeSeries",
+        "timeRange": "1h",
+        "statConfig": {
+          "statView": "grid",
+          "baseColor": "#4CBB17",
+          "calculation": "last"
+        },
+        "timeseries": {
+          "legend": {
+            "view": "list",
+            "values": []
+          }
+        },
+        "node_configs": [
+          {
+            "exp": "sum(rate(container_network_receive_packets_dropped_total{cluster=\"$cluster\", namespace=\"$namespace\"}[5m])) by (pod)",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "A",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "",
+            "dimensions": [],
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "AVG",
+              "type": "",
+              "field": ""
+            },
+            "datasourceId": "kloudmate",
+            "legendFormat": "{{pod}}",
+            "responseType": "series"
+          }
+        ]
+      },
+      {
+        "id": "bkl7lvx8wfb",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "suffix": "p/s",
+            "decimals": 2
+          }
+        },
+        "title": "Rate of Transmitted Packets Dropped",
+        "panelType": "TimeSeries",
+        "timeRange": "1h",
+        "statConfig": {
+          "statView": "grid",
+          "baseColor": "#4CBB17",
+          "calculation": "last"
+        },
+        "timeseries": {
+          "legend": {
+            "view": "list",
+            "values": []
+          }
+        },
+        "node_configs": [
+          {
+            "exp": "sum(rate(container_network_transmit_packets_dropped_total{cluster=\"$cluster\", namespace=\"$namespace\"}[5m])) by (pod)",
+            "stat": "",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "",
+            "nodeId": "A",
+            "region": "",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "",
+            "dimensions": [],
+            "metricType": "",
+            "query_type": "promql",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "AVG",
+              "type": "",
+              "field": ""
+            },
+            "datasourceId": "kloudmate",
+            "legendFormat": "{{pod}}",
+            "responseType": "series"
+          }
+        ]
+      }
+    ],
+    "timeRange": "1h",
+    "variables": [
+      {
+        "id": "a50f6eea-a86a-462c-90d7-6b94e623d022",
+        "name": "Datasource",
+        "type": "query",
+        "config": {
+          "source": "cloudwatch",
+          "queryType": "datasource"
+        },
+        "is_multi": false,
+        "description": "",
+        "show_all_option": false
+      },
+      {
+        "id": "8307b561-80b4-407e-b9bd-e800665da81a",
+        "name": "cluster",
+        "type": "query",
+        "config": {
+          "otel": {
+            "key": {
+              "type": "string",
+              "field": "cluster"
+            },
+            "dataset": "metrics",
+            "filters": [
+              {
+                "type": "string",
+                "field": "job",
+                "value": "integrations/kubernetes/kube-state-metrics",
+                "operator": "="
+              }
+            ]
+          },
+          "source": "cloudwatch",
+          "queryType": "otel.values"
+        },
+        "is_multi": false,
+        "description": "",
+        "usesVariables": [],
+        "show_all_option": false
+      },
+      {
+        "id": "5a74be1e-4373-45ee-9248-bf36e20e5536",
+        "name": "namespace",
+        "type": "query",
+        "config": {
+          "otel": {
+            "key": {
+              "type": "string",
+              "field": "namespace"
+            },
+            "dataset": "metrics",
+            "filters": [
+              {
+                "type": "string",
+                "field": "cluster",
+                "value": "$cluster",
+                "operator": "="
+              }
+            ]
+          },
+          "source": "cloudwatch",
+          "queryType": "otel.values"
+        },
+        "is_multi": false,
+        "description": "",
+        "usesVariables": [
+          {
+            "id": "8307b561-80b4-407e-b9bd-e800665da81a",
+            "name": "cluster"
+          }
+        ],
+        "show_all_option": false
+      }
+    ],
+    "panel_layouts": [
+      {
+        "h": 1,
+        "i": "7iayf7psr8h",
+        "w": 3,
+        "x": 0,
+        "y": 0,
+        "minH": 1,
+        "minW": 2,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 1,
+        "i": "8e7de9kp7vk",
+        "w": 3,
+        "x": 3,
+        "y": 0,
+        "minH": 1,
+        "minW": 2,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 1,
+        "i": "8tr1bshvyc9",
+        "w": 3,
+        "x": 6,
+        "y": 0,
+        "minH": 1,
+        "minW": 2,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 1,
+        "i": "dqgr7y0njdn",
+        "w": 3,
+        "x": 9,
+        "y": 0,
+        "minH": 1,
+        "minW": 2,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "lkl1bft4vpo",
+        "w": 12,
+        "x": 0,
+        "y": 1,
+        "minH": 1,
+        "minW": 2,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "6gro2x8e38g",
+        "w": 12,
+        "x": 0,
+        "y": 5,
+        "minH": 1,
+        "minW": 2,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "9ok218dm3y",
+        "w": 12,
+        "x": 0,
+        "y": 3,
+        "minH": 1,
+        "minW": 2,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "i95v2e21jii",
+        "w": 12,
+        "x": 0,
+        "y": 7,
+        "minH": 1,
+        "minW": 2,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "dkb63toyq6",
+        "w": 12,
+        "x": 0,
+        "y": 9,
+        "minH": 1,
+        "minW": 2,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "9kemm87uhto",
+        "w": 6,
+        "x": 0,
+        "y": 11,
+        "minH": 1,
+        "minW": 2,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "bgetj1h1uo",
+        "w": 6,
+        "x": 6,
+        "y": 11,
+        "minH": 1,
+        "minW": 2,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "bstujmzhtkd",
+        "w": 6,
+        "x": 0,
+        "y": 13,
+        "minH": 1,
+        "minW": 2,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "pd3brsg93jh",
+        "w": 6,
+        "x": 6,
+        "y": 13,
+        "minH": 1,
+        "minW": 2,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "4fnss2v52pj",
+        "w": 6,
+        "x": 0,
+        "y": 15,
+        "minH": 1,
+        "minW": 2,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "bkl7lvx8wfb",
+        "w": 6,
+        "x": 6,
+        "y": 15,
+        "minH": 1,
+        "minW": 2,
+        "moved": false,
+        "static": false
+      }
+    ],
+    "default_region": "us-east-1"
+  },
+  "tags": [
+    "kubernetes:cluster:namespace"
+  ]
+}
