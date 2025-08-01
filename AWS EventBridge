@@ -1,0 +1,209 @@
+{
+  "name": "AWS EventBridge",
+  "description": "",
+  "data": {
+    "tz": "local",
+    "panels": [
+      {
+        "id": "4a96a68b-7581-482e-8fb9-f9008803eb57",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "decimals": 1
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "Invocations",
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "node_configs": [
+          {
+            "stat": "Sum",
+            "type": "query",
+            "metric": "Invocations",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/Events",
+            "dimensions": {
+              "RuleName": [
+                "$RuleName"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "cf47087e-78f4-49e6-95b3-899df6c64a46",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "decimals": 1
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "Rules/Events",
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "TriggeredRules",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/Events",
+            "dimensions": {
+              "RuleName": [
+                "$RuleName"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          },
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "ThrottledRules",
+            "nodeId": "B",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/Events",
+            "dimensions": {
+              "RuleName": [
+                "$RuleName"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          },
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "MatchedEvents",
+            "nodeId": "C",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/Events",
+            "dimensions": {
+              "RuleName": [
+                "$RuleName"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      }
+    ],
+    "timeRange": "1d",
+    "variables": [
+      {
+        "id": "8c692014-3cb3-11ee-be56-0242ac120002",
+        "name": "Datasource",
+        "type": "query",
+        "config": {
+          "source": "cloudwatch",
+          "queryType": "datasource"
+        },
+        "description": ""
+      },
+      {
+        "id": "8a99e131-1375-4acf-999e-fa7205d04e14",
+        "name": "Region",
+        "type": "query",
+        "config": {
+          "source": "kloudmate",
+          "queryType": "regions",
+          "datasourceId": "$Datasource"
+        },
+        "folder_id": "dsh_lUgXPJum6Lcz",
+        "created_by": "u_Z927CW7qFDi7",
+        "updated_by": "u_Z927CW7qFDi7",
+        "description": "",
+        "workspace_id": "ws_Fa371fFkW2Y1"
+      },
+      {
+        "id": "87c553c8-e8eb-4154-a831-e78ed63c76d2",
+        "name": "RuleName",
+        "type": "query",
+        "config": {
+          "source": "kloudmate",
+          "metrics": "MatchedEvents",
+          "regions": "$Region",
+          "queryType": "dimension_values",
+          "datasource": "$Datasource",
+          "namespaces": "AWS/Events",
+          "datasourceId": "$Datasource",
+          "dimension_keys": "RuleName"
+        },
+        "folder_id": "dsh_lUgXPJum6Lcz",
+        "created_by": "u_Z927CW7qFDi7",
+        "updated_by": "u_Z927CW7qFDi7",
+        "description": "",
+        "workspace_id": "ws_Fa371fFkW2Y1"
+      }
+    ],
+    "panel_layouts": [
+      {
+        "h": 2,
+        "i": "4a96a68b-7581-482e-8fb9-f9008803eb57",
+        "w": 12,
+        "x": 0,
+        "y": 0,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "cf47087e-78f4-49e6-95b3-899df6c64a46",
+        "w": 12,
+        "x": 0,
+        "y": 2,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      }
+    ],
+    "default_region": "us-east-1"
+  },
+  "tags": [
+    "AWS"
+  ]
+}
