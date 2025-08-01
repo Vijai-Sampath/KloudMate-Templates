@@ -1,0 +1,623 @@
+{
+  "name": "AWS Kinesis",
+  "description": "",
+  "data": {
+    "tz": "local",
+    "panels": [
+      {
+        "id": "bdd478a5-64da-4750-9688-3a744c953833",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "percentage",
+            "decimals": 1,
+            "multiplyBy": 0.01
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "ReadProvisionedThroughputExceeded",
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              }
+            ]
+          }
+        },
+        "description": "The number of GetRecords calls throttled for the stream over the specified time period. The most commonly used statistic for this metric is Average.",
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "ReadProvisionedThroughputExceeded",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/Kinesis",
+            "dimensions": {
+              "StreamName": [
+                "$StreamName"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "16382a40-2f1d-45f1-8a9b-45f48b0eaf04",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "percentage",
+            "decimals": 1,
+            "multiplyBy": 0.01
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "WriteProvisionedThroughputExceeded",
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              }
+            ]
+          }
+        },
+        "description": "The number of GetRecords calls throttled for the stream over the specified time period.",
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "WriteProvisionedThroughputExceeded",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/Kinesis",
+            "dimensions": {
+              "StreamName": [
+                "$StreamName"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "fdee80d1-fcb5-46bb-9788-ffd7b71b3706",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "decimals": 1,
+            "multiplyBy": ""
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "Incoming Bytes",
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Total",
+                "value": "total"
+              }
+            ]
+          }
+        },
+        "description": "The number of bytes successfully put to the Kinesis stream over the specified time period.",
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "IncomingBytes",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/Kinesis",
+            "dimensions": {
+              "StreamName": [
+                "$StreamName"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "fd269ad3-6993-44ab-b5ef-30e8c3ef63b7",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "decimals": 1,
+            "multiplyBy": ""
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "OutgoingBytes",
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Total",
+                "value": "total"
+              }
+            ]
+          }
+        },
+        "description": "The number of bytes retrieved from the shard, measured over the specified time period.",
+        "node_configs": [
+          {
+            "stat": "Sum",
+            "type": "query",
+            "metric": "GetRecords.Records",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/Kinesis",
+            "dimensions": {
+              "StreamName": [
+                "$StreamName"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "506a4f17-2057-4afa-ad51-4dcc0c806611",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "duration",
+            "decimals": 1,
+            "multiplyBy": ""
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "GetRecords.Latency",
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              }
+            ]
+          }
+        },
+        "description": "The time taken per GetRecords operation, measured over the specified time period.",
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "GetRecords.Latency",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/Kinesis",
+            "dimensions": {
+              "StreamName": [
+                "$StreamName"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "81eaf847-c548-4e63-88ea-2bcba9b6f9bb",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "decimals": 1,
+            "multiplyBy": ""
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "GetRecords.Success",
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Total",
+                "value": "total"
+              }
+            ]
+          }
+        },
+        "description": "The number of successful GetRecords operations per stream, measured over the specified time period.",
+        "node_configs": [
+          {
+            "stat": "Sum",
+            "type": "query",
+            "metric": "GetRecords.Success",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/Kinesis",
+            "dimensions": {
+              "StreamName": [
+                "$StreamName"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "b7e21040-4be0-4257-8f8f-0c01213f9bcd",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "decimals": 1,
+            "multiplyBy": ""
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "PutRecord.Success",
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Total",
+                "value": "total"
+              }
+            ]
+          }
+        },
+        "description": "\t\nThe number of successful PutRecord operations per Kinesis stream, measured over the specified time period",
+        "node_configs": [
+          {
+            "stat": "Sum",
+            "type": "query",
+            "metric": "PutRecord.Success",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/Kinesis",
+            "dimensions": {
+              "StreamName": [
+                "$StreamName"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "f7b44ba6-cc4c-418c-9bd8-92b8314bfa78",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "duration",
+            "decimals": 1,
+            "multiplyBy": ""
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "GetRecords.IteratorAgeMilliseconds",
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              }
+            ]
+          }
+        },
+        "description": "The age of the last record in all GetRecords calls made against a Kinesis stream, measured over the specified time period",
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "GetRecords.IteratorAgeMilliseconds",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/Kinesis",
+            "dimensions": {
+              "StreamName": [
+                "$StreamName"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      }
+    ],
+    "timeRange": "1d",
+    "variables": [
+      {
+        "id": "8c692014-3cb3-11ee-be56-0242ac120002",
+        "name": "Datasource",
+        "type": "query",
+        "config": {
+          "source": "cloudwatch",
+          "queryType": "datasource"
+        },
+        "description": ""
+      },
+      {
+        "id": "304fbc93-4729-492a-b0bd-9bdb89fcf1ae",
+        "name": "Region",
+        "type": "query",
+        "config": {
+          "source": "kloudmate",
+          "queryType": "regions",
+          "datasourceId": "$Datasource"
+        },
+        "folder_id": "dsh_lUgXPJum6Lcz",
+        "created_by": "u_Z927CW7qFDi7",
+        "updated_by": "u_Z927CW7qFDi7",
+        "description": "",
+        "workspace_id": "ws_Fa371fFkW2Y1"
+      },
+      {
+        "id": "c07e0dd3-a488-4775-954e-ed5e4e79a824",
+        "name": "StreamName",
+        "type": "query",
+        "config": {
+          "source": "kloudmate",
+          "metrics": "IncomingBytes",
+          "regions": "$Region",
+          "queryType": "dimension_values",
+          "datasource": "$Datasource",
+          "namespaces": "AWS/Kinesis",
+          "datasourceId": "$Datasource",
+          "dimension_keys": "StreamName"
+        },
+        "folder_id": "dsh_lUgXPJum6Lcz",
+        "created_by": "u_Z927CW7qFDi7",
+        "updated_by": "u_Z927CW7qFDi7",
+        "description": "",
+        "workspace_id": "ws_Fa371fFkW2Y1"
+      }
+    ],
+    "panel_layouts": [
+      {
+        "h": 2,
+        "i": "bdd478a5-64da-4750-9688-3a744c953833",
+        "w": 6,
+        "x": 0,
+        "y": 0,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "16382a40-2f1d-45f1-8a9b-45f48b0eaf04",
+        "w": 6,
+        "x": 6,
+        "y": 0,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "fdee80d1-fcb5-46bb-9788-ffd7b71b3706",
+        "w": 6,
+        "x": 0,
+        "y": 2,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "fd269ad3-6993-44ab-b5ef-30e8c3ef63b7",
+        "w": 6,
+        "x": 6,
+        "y": 2,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "506a4f17-2057-4afa-ad51-4dcc0c806611",
+        "w": 6,
+        "x": 0,
+        "y": 6,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "81eaf847-c548-4e63-88ea-2bcba9b6f9bb",
+        "w": 6,
+        "x": 0,
+        "y": 4,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "b7e21040-4be0-4257-8f8f-0c01213f9bcd",
+        "w": 6,
+        "x": 6,
+        "y": 4,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "f7b44ba6-cc4c-418c-9bd8-92b8314bfa78",
+        "w": 6,
+        "x": 6,
+        "y": 6,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      }
+    ],
+    "default_region": "us-east-1"
+  },
+  "tags": [
+    "AWS::Kinesis::Stream"
+  ]
+}
