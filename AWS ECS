@@ -1,0 +1,285 @@
+{
+  "name": "AWS ECS",
+  "description": "",
+  "data": {
+    "tz": "local",
+    "panels": [
+      {
+        "id": "3yj10r2esnd",
+        "tz": "local",
+        "axis": {
+          "y": {
+            "format": "percentage",
+            "multiplyBy": 0.01
+          }
+        },
+        "panel": {
+          "axis": {
+            "x": {
+              "date_style": "auto"
+            },
+            "y": {
+              "format": "number",
+              "decimals": 1
+            },
+            "y1": {
+              "format": "number",
+              "decimals": 1
+            }
+          },
+          "title": "New Panel"
+        },
+        "title": "CPU Utilization",
+        "panelType": "TimeSeries",
+        "timeRange": "1h",
+        "statConfig": {
+          "statView": "grid",
+          "baseColor": "#4CBB17",
+          "calculation": "last"
+        },
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "limit": "",
+            "metric": "CPUUtilization",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "AWS/ECS",
+            "dimensions": {
+              "ClusterName": [
+                "$ClusterName"
+              ],
+              "ServiceName": [
+                "$ServiceName"
+              ]
+            },
+            "metricType": "",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "AVG",
+              "type": "",
+              "field": ""
+            },
+            "datasourceId": "$Datasource",
+            "responseType": "series"
+          }
+        ]
+      },
+      {
+        "id": "7ssi2wp0oh",
+        "tz": "local",
+        "axis": {
+          "y": {
+            "format": "percentage",
+            "decimals": 3,
+            "isEditable": true,
+            "multiplyBy": 0.01
+          },
+          "y1": {
+            "format": "unformatted",
+            "decimals": 3,
+            "isEditable": true
+          }
+        },
+        "panel": {
+          "axis": {
+            "x": {
+              "date_style": "auto"
+            },
+            "y": {
+              "format": "number",
+              "decimals": 1
+            },
+            "y1": {
+              "format": "number",
+              "decimals": 1
+            }
+          },
+          "title": "New Panel"
+        },
+        "title": "Memory Utilization",
+        "panelType": "TimeSeries",
+        "timeRange": "1h",
+        "statConfig": {
+          "statView": "grid",
+          "baseColor": "#4CBB17",
+          "calculation": "last"
+        },
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "limit": "",
+            "metric": "MemoryUtilization",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "AWS/ECS",
+            "dimensions": {
+              "ClusterName": [
+                "$ClusterName"
+              ],
+              "ServiceName": [
+                "$ServiceName"
+              ]
+            },
+            "metricType": "",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "AVG",
+              "type": "",
+              "field": ""
+            },
+            "datasourceId": "$Datasource",
+            "responseType": "series"
+          }
+        ]
+      }
+    ],
+    "timeRange": "1h",
+    "variables": [
+      {
+        "id": "8d5e4990-1aa7-4779-97f0-33367affa814",
+        "name": "Datasource",
+        "type": "query",
+        "config": {
+          "source": "cloudwatch",
+          "queryType": "datasource"
+        },
+        "description": ""
+      },
+      {
+        "id": "0f305392-c981-46eb-9ecb-2317a4f168b0",
+        "name": "Region",
+        "type": "query",
+        "config": {
+          "source": "cloudwatch",
+          "queryType": "regions"
+        },
+        "description": ""
+      },
+      {
+        "id": "b00eb92e-2933-4dcf-9f7a-633ae2408312",
+        "name": "ClusterName",
+        "type": "query",
+        "config": {
+          "source": "cloudwatch",
+          "metrics": "CPUUtilization",
+          "regions": "$Region",
+          "queryType": "dimension_values",
+          "datasource": "$Datasource",
+          "namespaces": "AWS/ECS",
+          "dimension_keys": "ClusterName"
+        },
+        "description": ""
+      },
+      {
+        "id": "46f334d2-4785-468e-93c0-3e15e7b234ba",
+        "name": "ServiceName",
+        "type": "query",
+        "config": {
+          "source": "cloudwatch",
+          "metrics": "CPUUtilization",
+          "regions": "$Region",
+          "queryType": "dimension_values",
+          "datasource": "$Datasource",
+          "namespaces": "AWS/ECS",
+          "dimension_keys": "ServiceName"
+        },
+        "description": ""
+      }
+    ],
+    "panel_layouts": [
+      {
+        "h": 4,
+        "i": "3yj10r2esnd",
+        "w": 6,
+        "x": 0,
+        "y": 0,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 4,
+        "i": "7ssi2wp0oh",
+        "w": 6,
+        "x": 6,
+        "y": 0,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      }
+    ],
+    "default_region": "us-east-1"
+  },
+  "tags": [
+    "AWS::ECS::Container"
+  ]
+}
