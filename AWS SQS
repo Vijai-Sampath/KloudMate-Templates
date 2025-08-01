@@ -1,0 +1,467 @@
+{
+  "name": "AWS SQS",
+  "description": "",
+  "data": {
+    "tz": "local",
+    "panels": [
+      {
+        "id": "1cf7e4ef-cc38-46e0-8ec3-554b6f50a969",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "decimals": 1
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "Messages",
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Total",
+                "value": "total"
+              }
+            ]
+          }
+        },
+        "node_configs": [
+          {
+            "stat": "Sum",
+            "type": "query",
+            "metric": "NumberOfMessagesSent",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/SQS",
+            "dimensions": {
+              "QueueName": [
+                "$QueueName"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          },
+          {
+            "stat": "Sum",
+            "type": "query",
+            "metric": "NumberOfMessagesReceived",
+            "nodeId": "B",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/SQS",
+            "dimensions": {
+              "QueueName": [
+                "$QueueName"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          },
+          {
+            "stat": "Sum",
+            "type": "query",
+            "metric": "NumberOfMessagesDeleted",
+            "nodeId": "C",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/SQS",
+            "dimensions": {
+              "QueueName": [
+                "$QueueName"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "053d2220-6900-443c-af6d-11fc4365da82",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "duration",
+            "decimals": 1,
+            "multiplyBy": 1000
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "ApproximateAgeOfOldestMessage",
+        "timeRange": "3h",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              }
+            ]
+          }
+        },
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "ApproximateAgeOfOldestMessage",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/SQS",
+            "dimensions": {
+              "QueueName": [
+                "$QueueName"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "ffb324e9-7041-4276-8296-4662eed28ba9",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "decimals": 1
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "ApproximateNumberOfMessages",
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Total",
+                "value": "total"
+              }
+            ]
+          }
+        },
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "ApproximateNumberOfMessagesVisible",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/SQS",
+            "dimensions": {
+              "QueueName": [
+                "$QueueName"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          },
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "ApproximateNumberOfMessagesNotVisible",
+            "nodeId": "B",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/SQS",
+            "dimensions": {
+              "QueueName": [
+                "$QueueName"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          },
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "ApproximateNumberOfMessagesDelayed",
+            "nodeId": "C",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/SQS",
+            "dimensions": {
+              "QueueName": [
+                "$QueueName"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "9c685ebc-303c-423d-976c-d4d522036f7b",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "decimals": 1
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "NumberOfEmptyReceives",
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Total",
+                "value": "total"
+              }
+            ]
+          }
+        },
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "NumberOfEmptyReceives",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/SQS",
+            "dimensions": {
+              "QueueName": [
+                "$QueueName"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "941d9232-84cb-4050-8ef8-fd6967bfd70e",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "bytes",
+            "decimals": 1,
+            "multiplyBy": ""
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "SentMessageSize",
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              }
+            ]
+          }
+        },
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "SentMessageSize",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/SQS",
+            "dimensions": {
+              "QueueName": [
+                "$QueueName"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      }
+    ],
+    "timeRange": "12h",
+    "variables": [
+      {
+        "id": "8c692014-3cb3-11ee-be56-0242ac120002",
+        "name": "Datasource",
+        "type": "query",
+        "config": {
+          "source": "cloudwatch",
+          "queryType": "datasource"
+        },
+        "description": ""
+      },
+      {
+        "id": "f5b4604b-b933-4aff-b516-40ba6ad3193f",
+        "name": "Region",
+        "type": "query",
+        "config": {
+          "source": "kloudmate",
+          "queryType": "regions",
+          "datasourceId": "$Datasource"
+        },
+        "folder_id": "dsh_lUgXPJum6Lcz",
+        "created_by": "u_Z927CW7qFDi7",
+        "updated_by": "u_Z927CW7qFDi7",
+        "description": "",
+        "workspace_id": "ws_Fa371fFkW2Y1"
+      },
+      {
+        "id": "1d19a07c-3c46-4c42-87af-ad8d9b15d18a",
+        "name": "QueueName",
+        "type": "query",
+        "config": {
+          "source": "kloudmate",
+          "metrics": "NumberOfEmptyReceives",
+          "regions": "$Region",
+          "queryType": "dimension_values",
+          "datasource": "$Datasource",
+          "namespaces": "AWS/SQS",
+          "datasourceId": "$Datasource",
+          "dimension_keys": "QueueName"
+        },
+        "folder_id": "dsh_lUgXPJum6Lcz",
+        "created_by": "u_Z927CW7qFDi7",
+        "updated_by": "u_Z927CW7qFDi7",
+        "description": "",
+        "workspace_id": "ws_Fa371fFkW2Y1"
+      }
+    ],
+    "panel_layouts": [
+      {
+        "h": 2,
+        "i": "1cf7e4ef-cc38-46e0-8ec3-554b6f50a969",
+        "w": 12,
+        "x": 0,
+        "y": 0,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 4,
+        "i": "053d2220-6900-443c-af6d-11fc4365da82",
+        "w": 4,
+        "x": 8,
+        "y": 4,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "ffb324e9-7041-4276-8296-4662eed28ba9",
+        "w": 12,
+        "x": 0,
+        "y": 2,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 4,
+        "i": "9c685ebc-303c-423d-976c-d4d522036f7b",
+        "w": 4,
+        "x": 0,
+        "y": 4,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 4,
+        "i": "941d9232-84cb-4050-8ef8-fd6967bfd70e",
+        "w": 4,
+        "x": 4,
+        "y": 4,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      }
+    ],
+    "default_region": "us-east-1"
+  },
+  "tags": [
+    "AWS::SQS::Queue"
+  ]
+}
