@@ -1,0 +1,534 @@
+{
+  "name": "AWS API Gateway-HTTP API",
+  "description": "This Dashboard is for AWS HTTP API Gateway Metrics.",
+  "data": {
+    "tz": "local",
+    "panels": [
+      {
+        "id": "7b9a5908-a2bf-4503-9bd6-e7b74cce9a99",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "decimals": 1
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "Count",
+        "panelType": "TimeSeries",
+        "timeRange": "1d",
+        "statConfig": {
+          "statView": "grid",
+          "baseColor": "#4CBB17",
+          "calculation": "last"
+        },
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Last",
+                "value": "last"
+              },
+              {
+                "label": "Total",
+                "value": "total"
+              }
+            ]
+          }
+        },
+        "description": "The total number API requests in a given period.",
+        "node_configs": [
+          {
+            "stat": "Sum",
+            "type": "query",
+            "metric": "Count",
+            "nodeId": "A",
+            "period": 60,
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/ApiGateway",
+            "dimensions": {
+              "ApiId": [
+                "$API ID"
+              ]
+            },
+            "datasourceId": "$Datasource",
+            "responseType": "series"
+          }
+        ]
+      },
+      {
+        "id": "52d76164-5848-4635-b1ad-723b6b0dc616",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "duration",
+            "decimals": 1
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "Latency & Integration latency",
+        "tooltip": {
+          "mode": "all"
+        },
+        "folder_id": "dsh_lUgXPJum6Lcz",
+        "panelType": "TimeSeries",
+        "timeRange": "1d",
+        "created_by": "u_Z927CW7qFDi7",
+        "statConfig": {
+          "statView": "grid",
+          "baseColor": "#4CBB17",
+          "calculation": "last"
+        },
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "updated_by": "u_Z927CW7qFDi7",
+        "description": "",
+        "node_configs": [
+          {
+            "stat": "Maximum",
+            "type": "query",
+            "metric": "Latency",
+            "nodeId": "A",
+            "period": 60,
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/ApiGateway",
+            "dimensions": {
+              "ApiId": [
+                "$API ID"
+              ]
+            },
+            "datasourceId": "$Datasource",
+            "responseType": "series"
+          },
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "IntegrationLatency",
+            "nodeId": "B",
+            "period": 60,
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/ApiGateway",
+            "dimensions": {
+              "ApiId": [
+                "$API ID"
+              ]
+            },
+            "datasourceId": "$Datasource",
+            "responseType": "series"
+          }
+        ],
+        "workspace_id": "ws_Fa371fFkW2Y1"
+      },
+      {
+        "id": "d7d2849f-0807-4f59-bea2-d53250d61d2b",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "decimals": 1
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "4XX Errors",
+        "panelType": "TimeSeries",
+        "timeRange": "1d",
+        "statConfig": {
+          "statView": "grid",
+          "baseColor": "#4CBB17",
+          "calculation": "last"
+        },
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Last",
+                "value": "last"
+              },
+              {
+                "label": "Total",
+                "value": "total"
+              }
+            ]
+          }
+        },
+        "description": "The number of client-side errors captured in a given period.",
+        "node_configs": [
+          {
+            "stat": "Sum",
+            "type": "query",
+            "metric": "4xx",
+            "nodeId": "A",
+            "period": 60,
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/ApiGateway",
+            "dimensions": {
+              "ApiId": [
+                "$API ID"
+              ]
+            },
+            "datasourceId": "$Datasource",
+            "responseType": "series"
+          }
+        ]
+      },
+      {
+        "id": "f57ef4c4-f19d-4793-9e42-1911bdd4ecbb",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "decimals": 1
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "5XX Errors",
+        "panelType": "TimeSeries",
+        "timeRange": "1d",
+        "statConfig": {
+          "statView": "grid",
+          "baseColor": "#4CBB17",
+          "calculation": "last"
+        },
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Last",
+                "value": "last"
+              },
+              {
+                "label": "Total",
+                "value": "total"
+              }
+            ]
+          }
+        },
+        "description": "The number of server-side errors captured in a given period.",
+        "node_configs": [
+          {
+            "stat": "Sum",
+            "type": "query",
+            "metric": "5xx",
+            "nodeId": "A",
+            "period": 60,
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/ApiGateway",
+            "dimensions": {
+              "ApiId": [
+                "$API ID"
+              ]
+            },
+            "datasourceId": "$Datasource",
+            "responseType": "series"
+          }
+        ]
+      },
+      {
+        "id": "jh35p6snvio",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "bytes",
+            "decimals": 3
+          }
+        },
+        "title": "Data Processed",
+        "panelType": "TimeSeries",
+        "timeRange": "1h",
+        "statConfig": {
+          "statView": "grid",
+          "baseColor": "#4CBB17",
+          "calculation": "last"
+        },
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "limit": "",
+            "hidden": false,
+            "metric": "DataProcessed",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "dataset": "metrics",
+            "filters": [],
+            "groupBy": [],
+            "orderBy": [],
+            "interval": "",
+            "namespace": "AWS/ApiGateway",
+            "dimensions": {
+              "ApiId": [
+                "$API ID"
+              ]
+            },
+            "metricType": "",
+            "time_range": {
+              "to": 0,
+              "from": 600
+            },
+            "aggregation": {
+              "stat": "AVG",
+              "type": "",
+              "field": ""
+            },
+            "datasourceId": "$Datasource",
+            "responseType": "series"
+          }
+        ]
+      }
+    ],
+    "timeRange": "1h",
+    "variables": [
+      {
+        "id": "8c692014-3cb3-11ee-be56-0242ac120002",
+        "name": "Datasource",
+        "type": "query",
+        "config": {
+          "source": "cloudwatch",
+          "queryType": "datasource"
+        },
+        "description": ""
+      },
+      {
+        "id": "0fc880d4-6dd3-4e53-b3fc-efe946cb7227",
+        "name": "Region",
+        "type": "query",
+        "config": {
+          "source": "kloudmate",
+          "queryType": "regions",
+          "datasourceId": "$Datasource"
+        },
+        "folder_id": "dsh_lUgXPJum6Lcz",
+        "created_by": "u_Z927CW7qFDi7",
+        "updated_by": "u_Z927CW7qFDi7",
+        "description": "",
+        "workspace_id": "ws_Fa371fFkW2Y1"
+      },
+      {
+        "id": "bacf2486-0075-47fa-9195-cafd968bb8cb",
+        "name": "API ID",
+        "type": "query",
+        "config": {
+          "source": "kloudmate",
+          "metrics": "Count",
+          "regions": "$Region",
+          "queryType": "dimension_values",
+          "datasource": "$Datasource",
+          "namespaces": "AWS/ApiGateway",
+          "datasourceId": "$Datasource",
+          "dimension_keys": "ApiId"
+        },
+        "folder_id": "dsh_lUgXPJum6Lcz",
+        "created_by": "u_Z927CW7qFDi7",
+        "updated_by": "u_Z927CW7qFDi7",
+        "description": "",
+        "usedInPanels": [
+          {
+            "id": "7b9a5908-a2bf-4503-9bd6-e7b74cce9a99",
+            "name": "Count"
+          },
+          {
+            "id": "52d76164-5848-4635-b1ad-723b6b0dc616",
+            "name": "Latency & Integration latency"
+          },
+          {
+            "id": "d7d2849f-0807-4f59-bea2-d53250d61d2b",
+            "name": "4XX Errors"
+          },
+          {
+            "id": "f57ef4c4-f19d-4793-9e42-1911bdd4ecbb",
+            "name": "5XX Errors"
+          }
+        ],
+        "workspace_id": "ws_Fa371fFkW2Y1",
+        "usesVariables": [
+          {
+            "id": "8c692014-3cb3-11ee-be56-0242ac120002",
+            "name": "Datasource"
+          },
+          {
+            "id": "0fc880d4-6dd3-4e53-b3fc-efe946cb7227",
+            "name": "Region"
+          }
+        ],
+        "usedInVariables": []
+      }
+    ],
+    "panel_layouts": [
+      {
+        "h": 2,
+        "i": "7b9a5908-a2bf-4503-9bd6-e7b74cce9a99",
+        "w": 12,
+        "x": 0,
+        "y": 0,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "52d76164-5848-4635-b1ad-723b6b0dc616",
+        "w": 6,
+        "x": 6,
+        "y": 4,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "d7d2849f-0807-4f59-bea2-d53250d61d2b",
+        "w": 6,
+        "x": 0,
+        "y": 2,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "f57ef4c4-f19d-4793-9e42-1911bdd4ecbb",
+        "w": 6,
+        "x": 6,
+        "y": 2,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "jh35p6snvio",
+        "w": 6,
+        "x": 0,
+        "y": 4,
+        "minH": 1,
+        "minW": 2,
+        "moved": false,
+        "static": false
+      }
+    ],
+    "default_region": "us-east-1"
+  },
+  "tags": [
+    "AWS::ApiGateway::v2"
+  ]
+}
