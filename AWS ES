@@ -1,0 +1,2081 @@
+{
+  "name": "AWS ES",
+  "description": "",
+  "data": {
+    "tz": "local",
+    "panels": [
+      {
+        "id": "188359ef-9ecb-42e5-8db6-fcfaefce4e65",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "decimals": 1
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "Cluster Status",
+        "tooltip": {
+          "mode": "single"
+        },
+        "overrides": [],
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "description": "Indicates shard allocation status.\nOnly the ClusterStatus.green should be 1.",
+        "node_configs": [
+          {
+            "stat": "Maximum",
+            "type": "query",
+            "metric": "ClusterStatus.green",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/ES",
+            "dimensions": {
+              "ClientId": [
+                "$ClientID"
+              ],
+              "DomainName": [
+                "$Domain Name"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          },
+          {
+            "stat": "Maximum",
+            "type": "query",
+            "metric": "ClusterStatus.yellow",
+            "nodeId": "B",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/ES",
+            "dimensions": {
+              "ClientId": [
+                "$ClientID"
+              ],
+              "DomainName": [
+                "$Domain Name"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          },
+          {
+            "stat": "Maximum",
+            "type": "query",
+            "metric": "ClusterStatus.red",
+            "nodeId": "C",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/ES",
+            "dimensions": {
+              "ClientId": [
+                "$ClientID"
+              ],
+              "DomainName": [
+                "$Domain Name"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "a4f98fde-4763-41f7-9928-739b220076e9",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "decimals": 1
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "Total Nodes",
+        "tooltip": {
+          "mode": "single"
+        },
+        "overrides": [],
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Total",
+                "value": "total"
+              }
+            ]
+          }
+        },
+        "description": "The total number of nodes for your cluster. This metric can increase (often doubling) during configuration changes and service software updates.",
+        "node_configs": [
+          {
+            "stat": "Sum",
+            "type": "query",
+            "metric": "Nodes",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/ES",
+            "dimensions": {
+              "ClientId": [
+                "$ClientID"
+              ],
+              "DomainName": [
+                "$Domain Name"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "e298d7a6-4728-4378-810f-dc713e8421bf",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "bytes",
+            "decimals": 1,
+            "multiplyBy": 1000000
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "Total free storage space",
+        "tooltip": {
+          "mode": "single"
+        },
+        "overrides": [],
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              }
+            ]
+          }
+        },
+        "description": "The total amount of free storage space, accross all data nodes.",
+        "node_configs": [
+          {
+            "stat": "Sum",
+            "type": "query",
+            "metric": "FreeStorageSpace",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/ES",
+            "dimensions": {
+              "ClientId": [
+                "$ClientID"
+              ],
+              "DomainName": [
+                "$Domain Name"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "fe9af8a6-2eef-4610-9001-e1e9db7c570b",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "percentage",
+            "decimals": 1,
+            "multiplyBy": 0.01
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "Maximum CPU Utilization",
+        "tooltip": {
+          "mode": "single"
+        },
+        "overrides": [],
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "description": "Maximum CPU utilization percentage for all data nodes.",
+        "node_configs": [
+          {
+            "stat": "Maximum",
+            "type": "query",
+            "metric": "CPUUtilization",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/ES",
+            "dimensions": {
+              "ClientId": [
+                "$ClientID"
+              ],
+              "DomainName": [
+                "$Domain Name"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "3f133c31-713b-47f1-bcea-09a72a2de6bd",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "decimals": 1
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "Master instance connection status",
+        "tooltip": {
+          "mode": "single"
+        },
+        "overrides": [],
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "description": "Indicates where data nodes can reach the master node. Failures are usually the result of a network connectivity problem.",
+        "node_configs": [
+          {
+            "stat": "Maximum",
+            "type": "query",
+            "metric": "MasterReachableFromNode",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/ES",
+            "dimensions": {
+              "ClientId": [
+                "$ClientID"
+              ],
+              "DomainName": [
+                "$Domain Name"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "0d4a61c1-6c81-4eb7-b1f3-af44ee169c09",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "decimals": 1
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "Kibana Status",
+        "tooltip": {
+          "mode": "single"
+        },
+        "overrides": [],
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "description": "Value must be 1.",
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "OpenSearchDashboardsHealthyNodes",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/ES",
+            "dimensions": {
+              "ClientId": [
+                "$ClientID"
+              ],
+              "DomainName": [
+                "$Domain Name"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "cc29b5d7-a7bd-41bc-b8e8-d468b55acf3f",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "decimals": 1
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "Deleted Documents",
+        "tooltip": {
+          "mode": "single"
+        },
+        "overrides": [],
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Total",
+                "value": "total"
+              },
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "description": "The total number of documents marked for deletion across all indices in the cluster.",
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "DeletedDocuments",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/ES",
+            "dimensions": {
+              "ClientId": [
+                "$ClientID"
+              ],
+              "DomainName": [
+                "$Domain Name"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "7856d64b-e27c-46b0-82eb-19fd52e0bcd1",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "percentage",
+            "decimals": 1,
+            "multiplyBy": 0.01
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "Maximum Memory Utilization",
+        "tooltip": {
+          "mode": "single"
+        },
+        "overrides": [],
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              }
+            ]
+          }
+        },
+        "description": "Maximum memory usage percentage for all data nodes.",
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "SysMemoryUtilization",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/ES",
+            "dimensions": {
+              "ClientId": [
+                "$ClientID"
+              ],
+              "DomainName": [
+                "$Domain Name"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "6dd92ffb-f04e-47b6-9caa-03bae5f98663",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "percentage",
+            "decimals": 1,
+            "multiplyBy": 0.01
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "Maximum JVMMemoryPressure",
+        "tooltip": {
+          "mode": "single"
+        },
+        "overrides": [],
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "description": "Maximum JVM memory pressure percentage for all data nodes.",
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "JVMMemoryPressure",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/ES",
+            "dimensions": {
+              "ClientId": [
+                "$ClientID"
+              ],
+              "DomainName": [
+                "$Domain Name"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "4dd8776f-535b-46ae-b18a-20efd8d9feed",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "decimals": 1
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "Cluster Writes Status",
+        "tooltip": {
+          "mode": "single"
+        },
+        "overrides": [],
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "description": "Indicates whether the cluster is accepting or blocking write requests. If your cluster is blocking write requests, check storage space, JVM memory pressure and CPU utilization.",
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "ClusterIndexWritesBlocked",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/ES",
+            "dimensions": {
+              "ClientId": [
+                "$ClientID"
+              ],
+              "DomainName": [
+                "$Domain Name"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "64a9507e-c6b3-4ca3-8ba2-0dc542174daf",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "decimals": 1
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "Snapshot failure status",
+        "tooltip": {
+          "mode": "single"
+        },
+        "overrides": [],
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "description": "Failure indicate that no automated snapshot has succeeded in the past 36 hours.",
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "AutomatedSnapshotFailure",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/ES",
+            "dimensions": {
+              "ClientId": [
+                "$ClientID"
+              ],
+              "DomainName": [
+                "$Domain Name"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "3e3122a8-884d-4f55-817b-d56775870021",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "decimals": 1
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "Searchable documents",
+        "tooltip": {
+          "mode": "single"
+        },
+        "overrides": [],
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Total",
+                "value": "total"
+              },
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "description": "The total number of searchable documents across all indices in the cluster.",
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "SearchableDocuments",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/ES",
+            "dimensions": {
+              "ClientId": [
+                "$ClientID"
+              ],
+              "DomainName": [
+                "$Domain Name"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "8bdc0df2-950a-47e6-9c63-5b2dabf59cb5",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "unformatted",
+            "prefix": "",
+            "suffix": " Ops/min",
+            "decimals": 1,
+            "multiplyBy": 0.001
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "SearchRate(Operations/minute)",
+        "tooltip": {
+          "mode": "single"
+        },
+        "overrides": [],
+        "timeRange": "3h",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Total",
+                "value": "total"
+              },
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "description": "The number of search operations per minute for all shards in the cluster. For example, a single call to the _search API that returns results from five shards counts as five operations.",
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "IndexingRate",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/ES",
+            "dimensions": {
+              "ClientId": [
+                "$ClientID"
+              ],
+              "DomainName": [
+                "$Domain Name"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "92c8cbf7-e22d-4824-9d2a-77f4df8199ab",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "unformatted",
+            "prefix": "",
+            "suffix": " Ops/min",
+            "decimals": 1,
+            "multiplyBy": ""
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "Indexing Rate",
+        "tooltip": {
+          "mode": "single"
+        },
+        "overrides": [],
+        "timeRange": "3h",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Total",
+                "value": "total"
+              },
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "description": "The number of indexing operations per minute. For example, a single call to the _bulk API that adds two documents and updates two counts as four operations plus four additional operations per replica. Document deletions do not towards this metric.",
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "IndexingRate",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/ES",
+            "dimensions": {
+              "ClientId": [
+                "$ClientID"
+              ],
+              "DomainName": [
+                "$Domain Name"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "ef89af92-93b1-4ff2-b77c-e11e8552192d",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "duration",
+            "decimals": 2
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "Indexing Latency",
+        "tooltip": {
+          "mode": "single"
+        },
+        "overrides": [],
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Total",
+                "value": "total"
+              },
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "description": "The average time that it takes a shard to complete an indexing operation.",
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "IndexingLatency",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/ES",
+            "dimensions": {
+              "ClientId": [
+                "$ClientID"
+              ],
+              "DomainName": [
+                "$Domain Name"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "2fea4e3a-1115-4467-a13c-0698c037e0e6",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "duration",
+            "decimals": 2
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "Search Latency",
+        "tooltip": {
+          "mode": "single"
+        },
+        "overrides": [],
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Total",
+                "value": "total"
+              },
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "description": "The average time that it takes a shard to complete a search  operation.",
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "SearchLatency",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/ES",
+            "dimensions": {
+              "ClientId": [
+                "$ClientID"
+              ],
+              "DomainName": [
+                "$Domain Name"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "40833e17-86cb-4f4d-bb4c-44c572a108f0",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "decimals": 1
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "Write Thread Pool",
+        "tooltip": {
+          "mode": "single"
+        },
+        "overrides": [],
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "description": "Metrics for the write thread pool: number of threads, tasks in the queue and rejected tasks. If the queue size is consistently high or rejected count is high, consider scaling your cluster.",
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "ThreadpoolWriteThreads",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/ES",
+            "dimensions": {
+              "ClientId": [
+                "$ClientID"
+              ],
+              "DomainName": [
+                "$Domain Name"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          },
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "ThreadpoolWriteQueue",
+            "nodeId": "B",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/ES",
+            "dimensions": {
+              "ClientId": [
+                "$ClientID"
+              ],
+              "DomainName": [
+                "$Domain Name"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          },
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "ThreadpoolWriteRejected",
+            "nodeId": "C",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/ES",
+            "dimensions": {
+              "ClientId": [
+                "$ClientID"
+              ],
+              "DomainName": [
+                "$Domain Name"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "8f39cb19-b3db-44c1-a6f4-2dfe8de8b71b",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "decimals": 1
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "Search Thread Pool",
+        "tooltip": {
+          "mode": "single"
+        },
+        "overrides": [],
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "description": "Metrics for search thread pool: number of threads tasks in the queue and rejected tasks. If the queue size is consistently high or rejected count is high, consider scaling your cluster.",
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "ThreadpoolSearchThreads",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/ES",
+            "dimensions": {
+              "ClientId": [
+                "$ClientID"
+              ],
+              "DomainName": [
+                "$Domain Name"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          },
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "ThreadpoolSearchQueue",
+            "nodeId": "B",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/ES",
+            "dimensions": {
+              "ClientId": [
+                "$ClientID"
+              ],
+              "DomainName": [
+                "$Domain Name"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          },
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "ThreadpoolSearchRejected",
+            "nodeId": "C",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/ES",
+            "dimensions": {
+              "ClientId": [
+                "$ClientID"
+              ],
+              "DomainName": [
+                "$Domain Name"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "bc69edc3-5d8e-4241-aeec-3489ba550093",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "decimals": 1
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "Merge Thread Pool",
+        "tooltip": {
+          "mode": "single"
+        },
+        "overrides": [],
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "description": "Metrics for the force merge thread pool: number of threads tasks in the queue and rejected tasks. If the queue size is consistently high or rejected count is high, consider scaling your cluster.",
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "ThreadpoolForce_mergeThreads",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/ES",
+            "dimensions": {
+              "ClientId": [
+                "$ClientID"
+              ],
+              "DomainName": [
+                "$Domain Name"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          },
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "ThreadpoolForce_mergeQueue",
+            "nodeId": "B",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/ES",
+            "dimensions": {
+              "ClientId": [
+                "$ClientID"
+              ],
+              "DomainName": [
+                "$Domain Name"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          },
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "ThreadpoolForce_mergeRejected",
+            "nodeId": "C",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/ES",
+            "dimensions": {
+              "ClientId": [
+                "$ClientID"
+              ],
+              "DomainName": [
+                "$Domain Name"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "388eff25-4dda-46f4-83f9-2082f54ac187",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "percentage",
+            "decimals": 1,
+            "multiplyBy": 0.01
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "Master CPU Utilization",
+        "tooltip": {
+          "mode": "single"
+        },
+        "overrides": [],
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "description": "CPU utilization percentage for the master node.",
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "MasterCPUUtilization",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/ES",
+            "dimensions": {
+              "ClientId": [
+                "$ClientID"
+              ],
+              "DomainName": [
+                "$Domain Name"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "95006d36-900e-4fde-b079-41d826e11b57",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "percentage",
+            "decimals": 1,
+            "multiplyBy": 0.01
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "Master JVMMemoryPressure",
+        "tooltip": {
+          "mode": "single"
+        },
+        "overrides": [],
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "description": "JVM memory pressure percentage for the master node.",
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "MasterJVMMemoryPressure",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/ES",
+            "dimensions": {
+              "ClientId": [
+                "$ClientID"
+              ],
+              "DomainName": [
+                "$Domain Name"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "f096c0ba-f536-4da7-8142-49bdef1b2654",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "percentage",
+            "decimals": 1,
+            "multiplyBy": 0.01
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "Maximum Memory Utilization",
+        "tooltip": {
+          "mode": "single"
+        },
+        "overrides": [],
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "description": "Maximum memory usage percentage for all data nodes.",
+        "node_configs": [
+          {
+            "stat": "Maximum",
+            "type": "query",
+            "metric": "MasterSysMemoryUtilization",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/ES",
+            "dimensions": {
+              "ClientId": [
+                "$ClientID"
+              ],
+              "DomainName": [
+                "$Domain Name"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "1e52dabc-f262-460e-83d3-eb998f72b099",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "decimals": 1
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "Young collection",
+        "tooltip": {
+          "mode": "single"
+        },
+        "overrides": [],
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "description": "The number of times that \"Young generation\" garbage collection has run. A large number if runs is a normal part of cluster operations. ",
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "JVMGCYoungCollectionCount",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/ES",
+            "dimensions": {
+              "ClientId": [
+                "$ClientID"
+              ],
+              "DomainName": [
+                "$Domain Name"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "c6205233-fe04-4a8e-af92-067f5daec0b0",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "duration",
+            "decimals": 1
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "Young Collection Time",
+        "tooltip": {
+          "mode": "single"
+        },
+        "overrides": [],
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "description": "The amount of time, in milliseconds that the cluster has spent performing \"Young generation\" garbage collection.",
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "JVMGCYoungCollectionTime",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/ES",
+            "dimensions": {
+              "ClientId": [
+                "$ClientID"
+              ],
+              "DomainName": [
+                "$Domain Name"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "e999f839-02be-44fc-90a5-398c33e36e2c",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "decimals": 1
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "JVMOld collection",
+        "tooltip": {
+          "mode": "single"
+        },
+        "overrides": [],
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "description": "The  number of times that \"old generation\" garbage collection has run. In a cluster with sufficient resources this number should remain small.",
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "JVMGCOldCollectionCount",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/ES",
+            "dimensions": {
+              "ClientId": [
+                "$ClientID"
+              ],
+              "DomainName": [
+                "$Domain Name"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "9785726c-5eec-4cc1-93fb-bb0aea66a5d4",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "duration",
+            "decimals": 1
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "Old Collection Time",
+        "tooltip": {
+          "mode": "single"
+        },
+        "overrides": [],
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "description": "The amount of time, in milliseconds that the cluster has spent performing \"old generation\" garbage collection.",
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "JVMGCOldCollectionTime",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/ES",
+            "dimensions": {
+              "ClientId": [
+                "$ClientID"
+              ],
+              "DomainName": [
+                "$Domain Name"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      }
+    ],
+    "timeRange": "12h",
+    "variables": [
+      {
+        "id": "8c692014-3cb3-11ee-be56-0242ac120002",
+        "name": "Datasource",
+        "type": "query",
+        "config": {
+          "source": "cloudwatch",
+          "queryType": "datasource"
+        },
+        "description": ""
+      },
+      {
+        "id": "12352719-fd7a-40af-aff9-f06e82cf3711",
+        "name": "Region",
+        "type": "query",
+        "config": {
+          "source": "kloudmate",
+          "queryType": "regions",
+          "datasourceId": "$Datasource"
+        },
+        "folder_id": "dsh_lUgXPJum6Lcz",
+        "created_by": "u_Z927CW7qFDi7",
+        "updated_by": "u_Z927CW7qFDi7",
+        "description": "",
+        "workspace_id": "ws_Fa371fFkW2Y1"
+      },
+      {
+        "id": "6f65a066-3a1f-4c41-bdfc-9c1594af09f6",
+        "name": "Domain Name",
+        "type": "query",
+        "config": {
+          "source": "kloudmate",
+          "metrics": "CPUUtilization",
+          "regions": "$Region",
+          "queryType": "dimension_values",
+          "datasource": "$Datasource",
+          "namespaces": "AWS/ES",
+          "datasourceId": "$Datasource",
+          "dimension_keys": "DomainName"
+        },
+        "folder_id": "dsh_lUgXPJum6Lcz",
+        "created_by": "u_Z927CW7qFDi7",
+        "updated_by": "u_Z927CW7qFDi7",
+        "description": "",
+        "workspace_id": "ws_Fa371fFkW2Y1"
+      },
+      {
+        "id": "64948a55-e970-4e91-843a-74539170ea28",
+        "name": "ClientID",
+        "type": "query",
+        "config": {
+          "source": "kloudmate",
+          "metrics": "CPUUtilization",
+          "regions": "$Region",
+          "queryType": "dimension_values",
+          "datasource": "$Datasource",
+          "namespaces": "AWS/ES",
+          "datasourceId": "$Datasource",
+          "dimension_keys": "ClientId"
+        },
+        "folder_id": "dsh_lUgXPJum6Lcz",
+        "created_by": "u_Z927CW7qFDi7",
+        "updated_by": "u_Z927CW7qFDi7",
+        "description": "",
+        "usedInPanels": [
+          {
+            "id": "188359ef-9ecb-42e5-8db6-fcfaefce4e65",
+            "name": "Cluster Status"
+          }
+        ],
+        "workspace_id": "ws_Fa371fFkW2Y1",
+        "usesVariables": [
+          {
+            "id": "12352719-fd7a-40af-aff9-f06e82cf3711",
+            "name": "Region"
+          }
+        ],
+        "usedInVariables": []
+      }
+    ],
+    "panel_layouts": [
+      {
+        "h": 2,
+        "i": "188359ef-9ecb-42e5-8db6-fcfaefce4e65",
+        "w": 3,
+        "x": 0,
+        "y": 0,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "a4f98fde-4763-41f7-9928-739b220076e9",
+        "w": 3,
+        "x": 3,
+        "y": 0,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "e298d7a6-4728-4378-810f-dc713e8421bf",
+        "w": 6,
+        "x": 6,
+        "y": 4,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "fe9af8a6-2eef-4610-9001-e1e9db7c570b",
+        "w": 6,
+        "x": 6,
+        "y": 0,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "3f133c31-713b-47f1-bcea-09a72a2de6bd",
+        "w": 3,
+        "x": 0,
+        "y": 4,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "0d4a61c1-6c81-4eb7-b1f3-af44ee169c09",
+        "w": 3,
+        "x": 3,
+        "y": 2,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "cc29b5d7-a7bd-41bc-b8e8-d468b55acf3f",
+        "w": 3,
+        "x": 3,
+        "y": 6,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "7856d64b-e27c-46b0-82eb-19fd52e0bcd1",
+        "w": 6,
+        "x": 6,
+        "y": 6,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "6dd92ffb-f04e-47b6-9caa-03bae5f98663",
+        "w": 6,
+        "x": 6,
+        "y": 2,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "4dd8776f-535b-46ae-b18a-20efd8d9feed",
+        "w": 3,
+        "x": 0,
+        "y": 2,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "64a9507e-c6b3-4ca3-8ba2-0dc542174daf",
+        "w": 3,
+        "x": 3,
+        "y": 4,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "3e3122a8-884d-4f55-817b-d56775870021",
+        "w": 3,
+        "x": 0,
+        "y": 6,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "8bdc0df2-950a-47e6-9c63-5b2dabf59cb5",
+        "w": 12,
+        "x": 0,
+        "y": 10,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "92c8cbf7-e22d-4824-9d2a-77f4df8199ab",
+        "w": 12,
+        "x": 0,
+        "y": 8,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "ef89af92-93b1-4ff2-b77c-e11e8552192d",
+        "w": 6,
+        "x": 0,
+        "y": 12,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "2fea4e3a-1115-4467-a13c-0698c037e0e6",
+        "w": 6,
+        "x": 6,
+        "y": 12,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "40833e17-86cb-4f4d-bb4c-44c572a108f0",
+        "w": 4,
+        "x": 0,
+        "y": 14,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "8f39cb19-b3db-44c1-a6f4-2dfe8de8b71b",
+        "w": 4,
+        "x": 4,
+        "y": 14,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "bc69edc3-5d8e-4241-aeec-3489ba550093",
+        "w": 4,
+        "x": 8,
+        "y": 14,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 3,
+        "i": "388eff25-4dda-46f4-83f9-2082f54ac187",
+        "w": 4,
+        "x": 0,
+        "y": 16,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 3,
+        "i": "95006d36-900e-4fde-b079-41d826e11b57",
+        "w": 4,
+        "x": 8,
+        "y": 16,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 3,
+        "i": "f096c0ba-f536-4da7-8142-49bdef1b2654",
+        "w": 4,
+        "x": 4,
+        "y": 16,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "1e52dabc-f262-460e-83d3-eb998f72b099",
+        "w": 3,
+        "x": 0,
+        "y": 19,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "c6205233-fe04-4a8e-af92-067f5daec0b0",
+        "w": 3,
+        "x": 3,
+        "y": 19,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "e999f839-02be-44fc-90a5-398c33e36e2c",
+        "w": 3,
+        "x": 9,
+        "y": 19,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "9785726c-5eec-4cc1-93fb-bb0aea66a5d4",
+        "w": 3,
+        "x": 6,
+        "y": 19,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      }
+    ],
+    "default_region": "us-east-1"
+  },
+  "tags": [
+    "AWS::OpenSearch"
+  ]
+}
