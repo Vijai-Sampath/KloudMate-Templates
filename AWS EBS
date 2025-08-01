@@ -1,0 +1,764 @@
+{
+  "name": "AWS EBS",
+  "description": "",
+  "data": {
+    "tz": "local",
+    "panels": [
+      {
+        "id": "ee50c4d4-ed56-4197-b4b7-b8c0e6103ab3",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "decimals": 1
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "VolumeQueueLength",
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Total",
+                "value": "total"
+              }
+            ]
+          }
+        },
+        "time_config": null,
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "VolumeQueueLength",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/EBS",
+            "dimensions": {
+              "VolumeId": [
+                "$VolumeID"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "768994b1-f7f6-4c78-8978-2c26f89120f8",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "duration",
+            "decimals": 1
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "VolumeTime",
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Total",
+                "value": "total"
+              }
+            ]
+          }
+        },
+        "time_config": null,
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "VolumeTotalReadTime",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/EBS",
+            "dimensions": {
+              "VolumeId": [
+                "$VolumeID"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          },
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "VolumeTotalWriteTime",
+            "nodeId": "B",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/EBS",
+            "dimensions": {
+              "VolumeId": [
+                "$VolumeID"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          },
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "VolumeIdleTime",
+            "nodeId": "C",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/EBS",
+            "dimensions": {
+              "VolumeId": [
+                "$VolumeID"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "0c17935e-e30f-4567-8d8f-c55098f5f183",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "percentage",
+            "decimals": 1,
+            "multiplyBy": 0.01
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "VolumeThroughputPercentage",
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              }
+            ]
+          }
+        },
+        "time_config": null,
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "VolumeThroughputPercentage",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/EBS",
+            "dimensions": {
+              "VolumeId": [
+                "$VolumeID"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "387d42d4-dbce-4cd0-9f8d-2a30081377cd",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "decimals": 1,
+            "multiplyBy": ""
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "VolumeConsumedReadWriteOps",
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              }
+            ]
+          }
+        },
+        "time_config": null,
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "VolumeConsumedReadWriteOps",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/EBS",
+            "dimensions": {
+              "VolumeId": [
+                "$VolumeID"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "d0d56865-1014-4c11-8ab4-25ef012b0a83",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "bytes",
+            "decimals": 1
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "VolumeReadBytes",
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Total",
+                "value": "total"
+              }
+            ]
+          }
+        },
+        "time_config": null,
+        "node_configs": [
+          {
+            "stat": "Sum",
+            "type": "query",
+            "metric": "VolumeReadBytes",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/EBS",
+            "dimensions": {
+              "VolumeId": [
+                "$VolumeID"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "2e46ba40-56c1-43df-ae3f-6b8284d34b0c",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "bytes",
+            "decimals": 1
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "VolumeWriteBytes",
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Total",
+                "value": "total"
+              }
+            ]
+          }
+        },
+        "time_config": null,
+        "node_configs": [
+          {
+            "stat": "Sum",
+            "type": "query",
+            "metric": "VolumeWriteBytes",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/EBS",
+            "dimensions": {
+              "VolumeId": [
+                "$VolumeID"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "fa3db931-76a5-45dc-952e-0e4ada235d98",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "decimals": 1
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "VolumeReadOps",
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Total",
+                "value": "total"
+              }
+            ]
+          }
+        },
+        "time_config": null,
+        "node_configs": [
+          {
+            "stat": "Sum",
+            "type": "query",
+            "metric": "VolumeReadOps",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/EBS",
+            "dimensions": {
+              "VolumeId": [
+                "$VolumeID"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "391bb08c-e6d0-4a52-917c-4a400e9fba56",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "decimals": 1
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "VolumeWriteOps",
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Total",
+                "value": "total"
+              }
+            ]
+          }
+        },
+        "time_config": null,
+        "node_configs": [
+          {
+            "stat": "Sum",
+            "type": "query",
+            "metric": "VolumeWriteOps",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/EBS",
+            "dimensions": {
+              "VolumeId": [
+                "$VolumeID"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "abc4e10d-180c-44d7-bc8d-e0c014582239",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "percentage",
+            "decimals": 1,
+            "multiplyBy": 0.01
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "BurstBalance",
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              }
+            ]
+          }
+        },
+        "time_config": null,
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "BurstBalance",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/EBS",
+            "dimensions": {
+              "VolumeId": [
+                "$VolumeID"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      }
+    ],
+    "timeRange": "1d",
+    "variables": [
+      {
+        "id": "8c692014-3cb3-11ee-be56-0242ac120002",
+        "name": "Datasource",
+        "type": "query",
+        "config": {
+          "source": "cloudwatch",
+          "queryType": "datasource"
+        },
+        "description": ""
+      },
+      {
+        "id": "fb7fd7d2-f68b-4ff7-810b-feda223c4ce5",
+        "name": "Region",
+        "type": "query",
+        "config": {
+          "source": "cloudwatch",
+          "queryType": "regions"
+        },
+        "description": ""
+      },
+      {
+        "id": "07767599-25e7-4078-b185-6270e4967949",
+        "name": "VolumeID",
+        "type": "query",
+        "label": "Volume ID",
+        "config": {
+          "source": "cloudwatch",
+          "metrics": "BurstBalance",
+          "regions": "$Region",
+          "queryType": "dimension_values",
+          "datasource": "$Datasource",
+          "namespaces": "AWS/EBS",
+          "dimension_keys": "VolumeId"
+        },
+        "description": "",
+        "usedInPanels": [
+          {
+            "id": "ee50c4d4-ed56-4197-b4b7-b8c0e6103ab3",
+            "name": "VolumeQueueLength"
+          },
+          {
+            "id": "768994b1-f7f6-4c78-8978-2c26f89120f8",
+            "name": "VolumeTime"
+          },
+          {
+            "id": "0c17935e-e30f-4567-8d8f-c55098f5f183",
+            "name": "VolumeThroughputPercentage"
+          },
+          {
+            "id": "387d42d4-dbce-4cd0-9f8d-2a30081377cd",
+            "name": "VolumeConsumedReadWriteOps"
+          },
+          {
+            "id": "d0d56865-1014-4c11-8ab4-25ef012b0a83",
+            "name": "VolumeReadBytes"
+          },
+          {
+            "id": "2e46ba40-56c1-43df-ae3f-6b8284d34b0c",
+            "name": "VolumeWriteBytes"
+          },
+          {
+            "id": "fa3db931-76a5-45dc-952e-0e4ada235d98",
+            "name": "VolumeReadOps"
+          },
+          {
+            "id": "391bb08c-e6d0-4a52-917c-4a400e9fba56",
+            "name": "VolumeWriteOps"
+          },
+          {
+            "id": "abc4e10d-180c-44d7-bc8d-e0c014582239",
+            "name": "BurstBalance"
+          }
+        ],
+        "usesVariables": [
+          {
+            "id": "8c692014-3cb3-11ee-be56-0242ac120002",
+            "name": "Datasource"
+          },
+          {
+            "id": "fb7fd7d2-f68b-4ff7-810b-feda223c4ce5",
+            "name": "Region"
+          }
+        ],
+        "usedInVariables": []
+      }
+    ],
+    "time_config": null,
+    "panel_layouts": [
+      {
+        "h": 2,
+        "i": "ee50c4d4-ed56-4197-b4b7-b8c0e6103ab3",
+        "w": 4,
+        "x": 8,
+        "y": 0,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "768994b1-f7f6-4c78-8978-2c26f89120f8",
+        "w": 4,
+        "x": 4,
+        "y": 0,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "0c17935e-e30f-4567-8d8f-c55098f5f183",
+        "w": 6,
+        "x": 0,
+        "y": 6,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "387d42d4-dbce-4cd0-9f8d-2a30081377cd",
+        "w": 6,
+        "x": 6,
+        "y": 6,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "d0d56865-1014-4c11-8ab4-25ef012b0a83",
+        "w": 6,
+        "x": 0,
+        "y": 4,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "2e46ba40-56c1-43df-ae3f-6b8284d34b0c",
+        "w": 6,
+        "x": 6,
+        "y": 4,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "fa3db931-76a5-45dc-952e-0e4ada235d98",
+        "w": 6,
+        "x": 0,
+        "y": 2,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "391bb08c-e6d0-4a52-917c-4a400e9fba56",
+        "w": 6,
+        "x": 6,
+        "y": 2,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "abc4e10d-180c-44d7-bc8d-e0c014582239",
+        "w": 4,
+        "x": 0,
+        "y": 0,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      }
+    ],
+    "default_region": "us-east-1"
+  },
+  "tags": [
+    "AWS::EC2::EBS"
+  ]
+}
