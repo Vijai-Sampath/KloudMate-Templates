@@ -1,0 +1,1796 @@
+{
+  "name": "AWS RDS",
+  "description": "",
+  "data": {
+    "tz": "local",
+    "panels": [
+      {
+        "id": "4339dac7-dfac-469b-aef7-8c7733400236",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "percentage",
+            "decimals": 2,
+            "multiplyBy": 0.01
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "CPU Utilization",
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "CPUUtilization",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/RDS",
+            "dimensions": {
+              "DBInstanceIdentifier": [
+                "$DB Instance"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "a5913cb9-0949-4265-82eb-28136930f290",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "decimals": 1
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "Database Connections",
+        "timeRange": "12h",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Total",
+                "value": "total"
+              },
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "description": "The number of connections to the DB instance",
+        "node_configs": [
+          {
+            "stat": "Maximum",
+            "type": "query",
+            "metric": "DatabaseConnections",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/RDS",
+            "dimensions": {
+              "DBInstanceIdentifier": [
+                "$DB Instance"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "0d9279e1-da23-410c-8147-d035435e27bc",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "bytes",
+            "decimals": 1
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "FreeableMemory",
+        "timeRange": "12h",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "description": "Free memory available on RDS instance",
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "FreeableMemory",
+            "nodeId": "A",
+            "period": 60,
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/RDS",
+            "dimensions": {
+              "DBInstanceIdentifier": [
+                "$DB Instance"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "a0cb08e9-6a3b-4c6a-ad43-36eb7c99a027",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "bytes",
+            "decimals": 2,
+            "multiplyBy": ""
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "Free Storage Space",
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "FreeStorageSpace",
+            "nodeId": "A",
+            "period": 60,
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/RDS",
+            "dimensions": {
+              "DBInstanceIdentifier": [
+                "$DB Instance"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "3c338116-4ee9-40e6-9030-3040e54fc866",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "duration",
+            "decimals": 2,
+            "multiplyBy": 1000
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "Read Latency ",
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "description": "The average amount of time taken per disk I/O operation.",
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "ReadLatency",
+            "nodeId": "A",
+            "period": 60,
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/RDS",
+            "dimensions": {
+              "DBInstanceIdentifier": [
+                "$DB Instance"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "d9c2c535-9659-4f3b-980e-137f63a39e31",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "percentage",
+            "decimals": 1,
+            "multiplyBy": 0.01
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "BrustBalance",
+        "timeRange": "12h",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "description": "The percent of General Purpose SSD (gp2) burst-bucket I/O credits available.",
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "BurstBalance",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/RDS",
+            "dimensions": {
+              "DBInstanceIdentifier": [
+                "$DB Instance"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "2042f247-1f91-4cf1-a87f-de9cafea9cd8",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "decimals": 1,
+            "multiplyBy": ""
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "CPUCreditBalance",
+        "timeRange": "12h",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "description": "The number of earned CPU credits that an instance has accrued since it was launched or started.",
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "CPUCreditBalance",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/RDS",
+            "dimensions": {
+              "DBInstanceIdentifier": [
+                "$DB Instance"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "ab2784ba-bffd-4baa-bac4-d714e6c13616",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "decimals": 1,
+            "multiplyBy": ""
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "CPUCreditUsage",
+        "timeRange": "12h",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "description": "The number of CPU credits spent by the instance for CPU utilization.",
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "CPUCreditUsage",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/RDS",
+            "dimensions": {
+              "DBInstanceIdentifier": [
+                "$DB Instance"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "dfbdf1c1-f8dd-4428-95c9-4361ab3d1ffc",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "decimals": 1,
+            "multiplyBy": ""
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "DiskQueueDepth",
+        "timeRange": "12h",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "description": "The number of outstanding I/Os (read/write requests) waiting to access the disk.",
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "DiskQueueDepth",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/RDS",
+            "dimensions": {
+              "DBInstanceIdentifier": [
+                "$DB Instance"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "4a527336-ce4c-495d-a7e1-28b468f8560e",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "percentage",
+            "decimals": 1,
+            "multiplyBy": 0.01
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "EBSByteBalance%",
+        "timeRange": "12h",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "description": "The percentage of throughput credits remaining in the burst bucket of your RDS database. ",
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "EBSByteBalance%",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/RDS",
+            "dimensions": {
+              "DBInstanceIdentifier": [
+                "$DB Instance"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "2539298b-f072-43d0-8c50-8d5d8bce66e0",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "percentage",
+            "decimals": 1,
+            "multiplyBy": 0.01
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "EBSIOBalance%",
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "description": "The percentage of I/O credits remaining in the burst bucket of your RDS database",
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "EBSIOBalance%",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/RDS",
+            "dimensions": {
+              "DBInstanceIdentifier": [
+                "$DB Instance"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "a6452e13-4c6b-4947-ae69-dbae7af295c8",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "decimals": 1,
+            "multiplyBy": ""
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "MaximumUsedTransactionIDs",
+        "timeRange": "12h",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "description": "The maximum transaction IDs that have been used.",
+        "node_configs": [
+          {
+            "stat": "Maximum",
+            "type": "query",
+            "metric": "MaximumUsedTransactionIDs",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/RDS",
+            "dimensions": {
+              "DBInstanceIdentifier": [
+                "$DB Instance"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "d6ecea4c-404c-4808-9378-0d66bc3d3b2a",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "decimals": 1,
+            "multiplyBy": ""
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "NetworkReceiveThroughput(Bytes/Second)",
+        "timeRange": "12h",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "description": "The incoming (receive) network traffic on the DB instance, including both customer database traffic and Amazon RDS traffic used for monitoring and replication.",
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "NetworkReceiveThroughput",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/RDS",
+            "dimensions": {
+              "DBInstanceIdentifier": [
+                "$DB Instance"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "d95a98b1-4acb-468b-ac71-cf5dd3a7f536",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "decimals": 1,
+            "multiplyBy": ""
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "NetworkTransmitThroughput(Bytes/Second)",
+        "timeRange": "12h",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "description": "The outgoing (transmit) network traffic on the DB instance, including both customer database traffic and Amazon RDS traffic used for monitoring and replication.",
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "NetworkTransmitThroughput",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/RDS",
+            "dimensions": {
+              "DBInstanceIdentifier": [
+                "$DB Instance"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "bcf0759e-6713-4661-80eb-f311eb3b6fa5",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "bytes",
+            "decimals": 1,
+            "multiplyBy": 0.001
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "OldestReplicationSlotLag",
+        "timeRange": "12h",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "description": "The lagging size of the replica lagging the most in terms of write-ahead log (WAL) data received. Applies to PostgreSQL.",
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "OldestReplicationSlotLag",
+            "nodeId": "A",
+            "period": 60,
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/RDS",
+            "dimensions": {
+              "DBInstanceIdentifier": [
+                "$DB Instance"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "293d3564-60e1-4c8a-bb3d-d773ddd0493f",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "decimals": 1,
+            "multiplyBy": ""
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "ReadIOPS(count/sec)",
+        "timeRange": "12h",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "description": "The average number of disk read I/O operations per second.",
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "ReadIOPS",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/RDS",
+            "dimensions": {
+              "DBInstanceIdentifier": [
+                "$DB Instance"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "808b8fa8-b9fd-435d-8cec-7d722044ee93",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "decimals": 1,
+            "multiplyBy": ""
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "ReadThroughput (bytes/sec)",
+        "timeRange": "12h",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "description": "The average number of bytes read from disk per second.",
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "ReadThroughput",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/RDS",
+            "dimensions": {
+              "DBInstanceIdentifier": [
+                "$DB Instance"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "711ea73c-42ef-48f7-bc6e-a4900f7d7c0c",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "bytes",
+            "decimals": 1,
+            "multiplyBy": 0.001
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "ReplicationSlotDiskUsage(Bytes)",
+        "timeRange": "12h",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "description": "The disk space used by replication slot files. Applies to PostgreSQL.",
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "ReplicationSlotDiskUsage",
+            "nodeId": "A",
+            "period": 60,
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/RDS",
+            "dimensions": {
+              "DBInstanceIdentifier": [
+                "$DB Instance"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "d1d26b93-c693-4657-8ed4-d36cca6db0ba",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "bytes",
+            "decimals": 1,
+            "multiplyBy": 0.001
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "SwapUsage(Bytes)",
+        "timeRange": "12h",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "description": "The amount of swap space used on the DB instance. This metric is not available for SQL Server.",
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "SwapUsage",
+            "nodeId": "A",
+            "period": 60,
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/RDS",
+            "dimensions": {
+              "DBInstanceIdentifier": [
+                "$DB Instance"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "15c90b22-9836-4581-8a08-e825d1a2cb00",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "bytes",
+            "decimals": 1,
+            "multiplyBy": 0.001
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "TransactionLogsDiskUsage",
+        "timeRange": "12h",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "description": "The disk space used by transaction logs. Applies to PostgreSQL.",
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "TransactionLogsDiskUsage",
+            "nodeId": "A",
+            "period": 60,
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/RDS",
+            "dimensions": {
+              "DBInstanceIdentifier": [
+                "$DB Instance"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "6e4400cb-2116-444c-b2ab-cee82889bfe7",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "decimals": 1,
+            "multiplyBy": ""
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "TransactionLogsGeneration(Bytes/Second)",
+        "timeRange": "12h",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "description": "The size of transaction logs generated per second. Applies to PostgreSQL.",
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "TransactionLogsGeneration",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/RDS",
+            "dimensions": {
+              "DBInstanceIdentifier": [
+                "$DB Instance"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "06d66afd-54d8-4e41-bb6e-3323375fdd89",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "decimals": 1,
+            "multiplyBy": ""
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "WriteIOPS(count/sec)",
+        "timeRange": "12h",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "description": "The average number of disk write I/O operations per second.",
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "WriteIOPS",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/RDS",
+            "dimensions": {
+              "DBInstanceIdentifier": [
+                "$DB Instance"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "43815775-c2ee-407c-8b11-c6d7d78a5edc",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "duration",
+            "decimals": 2,
+            "multiplyBy": 1000
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "WriteLatency",
+        "timeRange": "1d",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "description": "The average amount of time taken per disk I/O operation.",
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "WriteLatency",
+            "nodeId": "A",
+            "period": 60,
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/RDS",
+            "dimensions": {
+              "DBInstanceIdentifier": [
+                "$DB Instance"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      },
+      {
+        "id": "7669dd85-bd25-45a9-a365-625f0620dd2f",
+        "tz": "local",
+        "axis": {
+          "x": {
+            "date_style": "auto"
+          },
+          "y": {
+            "format": "number",
+            "decimals": 1,
+            "multiplyBy": ""
+          },
+          "y1": {
+            "format": "number",
+            "decimals": 1
+          }
+        },
+        "title": "WriteThroughput(bytes/sec)",
+        "timeRange": "12h",
+        "timeseries": {
+          "legend": {
+            "view": "table",
+            "values": [
+              {
+                "label": "Min",
+                "value": "min"
+              },
+              {
+                "label": "Max",
+                "value": "max"
+              },
+              {
+                "label": "Mean",
+                "value": "mean"
+              },
+              {
+                "label": "Last",
+                "value": "last"
+              }
+            ]
+          }
+        },
+        "description": "The average number of bytes written to disk per second.",
+        "node_configs": [
+          {
+            "stat": "Average",
+            "type": "query",
+            "metric": "WriteThroughput",
+            "nodeId": "A",
+            "region": "$Region",
+            "source": "kloudmate",
+            "namespace": "AWS/RDS",
+            "dimensions": {
+              "DBInstanceIdentifier": [
+                "$DB Instance"
+              ]
+            },
+            "datasourceId": "$Datasource"
+          }
+        ]
+      }
+    ],
+    "timeRange": "1d",
+    "variables": [
+      {
+        "id": "8c692014-3cb3-11ee-be56-0242ac120002",
+        "name": "Datasource",
+        "type": "query",
+        "config": {
+          "source": "cloudwatch",
+          "queryType": "datasource"
+        },
+        "description": ""
+      },
+      {
+        "id": "e81987c0-d0eb-4d1f-88be-29fef8c0b05f",
+        "name": "Region",
+        "type": "query",
+        "config": {
+          "source": "kloudmate",
+          "queryType": "regions",
+          "datasourceId": "$Datasource"
+        },
+        "folder_id": "dsh_lUgXPJum6Lcz",
+        "created_by": "u_Z927CW7qFDi7",
+        "updated_by": "u_Z927CW7qFDi7",
+        "description": "",
+        "workspace_id": "ws_Fa371fFkW2Y1"
+      },
+      {
+        "id": "758ee00c-4960-4594-850b-88510f1c9b4e",
+        "name": "DB Instance",
+        "type": "query",
+        "config": {
+          "source": "kloudmate",
+          "metrics": "CPUUtilization",
+          "regions": "$Region",
+          "queryType": "dimension_values",
+          "datasource": "$Datasource",
+          "dimensions": {},
+          "namespaces": "AWS/RDS",
+          "datasourceId": "$Datasource",
+          "dimension_keys": "DBInstanceIdentifier"
+        },
+        "description": "DB instance identifier"
+      }
+    ],
+    "panel_layouts": [
+      {
+        "h": 3,
+        "i": "4339dac7-dfac-469b-aef7-8c7733400236",
+        "w": 6,
+        "x": 0,
+        "y": 0,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 3,
+        "i": "a5913cb9-0949-4265-82eb-28136930f290",
+        "w": 6,
+        "x": 6,
+        "y": 0,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 3,
+        "i": "0d9279e1-da23-410c-8147-d035435e27bc",
+        "w": 6,
+        "x": 0,
+        "y": 3,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 3,
+        "i": "a0cb08e9-6a3b-4c6a-ad43-36eb7c99a027",
+        "w": 6,
+        "x": 6,
+        "y": 3,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "3c338116-4ee9-40e6-9030-3040e54fc866",
+        "w": 4,
+        "x": 4,
+        "y": 13,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "d9c2c535-9659-4f3b-980e-137f63a39e31",
+        "w": 4,
+        "x": 8,
+        "y": 9,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "2042f247-1f91-4cf1-a87f-de9cafea9cd8",
+        "w": 4,
+        "x": 0,
+        "y": 9,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "ab2784ba-bffd-4baa-bac4-d714e6c13616",
+        "w": 4,
+        "x": 4,
+        "y": 9,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "dfbdf1c1-f8dd-4428-95c9-4361ab3d1ffc",
+        "w": 4,
+        "x": 0,
+        "y": 11,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "4a527336-ce4c-495d-a7e1-28b468f8560e",
+        "w": 4,
+        "x": 8,
+        "y": 11,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "2539298b-f072-43d0-8c50-8d5d8bce66e0",
+        "w": 4,
+        "x": 4,
+        "y": 11,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "a6452e13-4c6b-4947-ae69-dbae7af295c8",
+        "w": 4,
+        "x": 0,
+        "y": 17,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 3,
+        "i": "d6ecea4c-404c-4808-9378-0d66bc3d3b2a",
+        "w": 6,
+        "x": 6,
+        "y": 6,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 3,
+        "i": "d95a98b1-4acb-468b-ac71-cf5dd3a7f536",
+        "w": 6,
+        "x": 0,
+        "y": 6,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "bcf0759e-6713-4661-80eb-f311eb3b6fa5",
+        "w": 4,
+        "x": 4,
+        "y": 17,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "293d3564-60e1-4c8a-bb3d-d773ddd0493f",
+        "w": 4,
+        "x": 8,
+        "y": 13,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "808b8fa8-b9fd-435d-8cec-7d722044ee93",
+        "w": 4,
+        "x": 0,
+        "y": 13,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "711ea73c-42ef-48f7-bc6e-a4900f7d7c0c",
+        "w": 4,
+        "x": 8,
+        "y": 17,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "d1d26b93-c693-4657-8ed4-d36cca6db0ba",
+        "w": 4,
+        "x": 4,
+        "y": 19,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "15c90b22-9836-4581-8a08-e825d1a2cb00",
+        "w": 4,
+        "x": 8,
+        "y": 19,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "6e4400cb-2116-444c-b2ab-cee82889bfe7",
+        "w": 4,
+        "x": 0,
+        "y": 19,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "06d66afd-54d8-4e41-bb6e-3323375fdd89",
+        "w": 4,
+        "x": 0,
+        "y": 15,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "43815775-c2ee-407c-8b11-c6d7d78a5edc",
+        "w": 4,
+        "x": 4,
+        "y": 15,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      },
+      {
+        "h": 2,
+        "i": "7669dd85-bd25-45a9-a365-625f0620dd2f",
+        "w": 4,
+        "x": 8,
+        "y": 15,
+        "minH": 2,
+        "minW": 3,
+        "moved": false,
+        "static": false
+      }
+    ],
+    "default_region": "us-east-1"
+  },
+  "tags": [
+    "AWS::RDS::Instance"
+  ]
+}
